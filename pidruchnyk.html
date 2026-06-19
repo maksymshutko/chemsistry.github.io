@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Підручник · Хімія 10 клас</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #1a1d24;
+    --bg-soft: #20242c;
+    --panel: #262b35;
+    --line: #343a46;
+    --text: #e9ebef;
+    --text-dim: #9aa3b2;
+    --green: #7fb069;
+    --green-soft: #7fb06922;
+    --orange: #e8854a;
+    --blue: #5b9bd1;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+  .mono{font-family:'JetBrains Mono', monospace;}
+
+  /* ===== Nav (same as homepage) ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(26,29,36,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:1180px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 32px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-weight:800; font-size:1.05rem; letter-spacing:0.01em;
+    text-decoration:none; color:var(--text);
+  }
+  .logo .tile{
+    width:34px; height:34px; border-radius:8px;
+    background:linear-gradient(155deg, var(--green), #5d8a4a);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:0.85rem;
+    color:#10130f;
+  }
+  .navlinks{display:flex; gap:32px; font-size:0.92rem; color:var(--text-dim);}
+  .navlinks a{color:inherit; text-decoration:none; transition:color .2s;}
+  .navlinks a:hover{color:var(--text);}
+  .navlinks a.active{color:var(--green);}
+
+  /* ===== Page header ===== */
+  .page-head{
+    max-width:1180px; margin:0 auto;
+    padding:56px 32px 32px;
+  }
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--green); font-size:0.82rem; letter-spacing:0.08em;
+    text-transform:uppercase; margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:''; width:8px; height:8px; border-radius:50%;
+    background:var(--green); box-shadow:0 0 0 4px var(--green-soft);
+  }
+  .page-head h1{
+    font-size:2.4rem; font-weight:800; letter-spacing:-0.01em; margin-bottom:12px;
+  }
+  .page-head .sub{color:var(--text-dim); font-size:1.02rem; max-width:560px; line-height:1.55;}
+
+  /* ===== Action bar ===== */
+  .action-bar{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 28px;
+    display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+  }
+  .btn{
+    font-family:'Inter'; font-weight:600; font-size:0.92rem;
+    padding:12px 22px; border-radius:10px; border:1px solid transparent;
+    cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+    transition: transform .15s, box-shadow .15s;
+  }
+  .btn-primary{background:var(--green); color:#10130f;}
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 8px 24px var(--green-soft);}
+  .btn-ghost{background:transparent; color:var(--text); border-color:var(--line);}
+  .btn-ghost:hover{border-color:var(--text-dim); transform:translateY(-2px);}
+  .meta-pill{
+    font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--text-dim);
+    border:1px solid var(--line); padding:7px 12px; border-radius:8px;
+  }
+
+  /* ===== PDF viewer panel ===== */
+  .viewer-wrap{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 64px;
+  }
+  .viewer-panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    padding:14px; box-shadow:0 30px 60px -30px rgba(0,0,0,0.5);
+  }
+  .viewer-panel iframe{
+    width:100%; height:80vh; min-height:520px;
+    border:none; border-radius:10px; background:#0e1014;
+    display:block;
+  }
+
+  /* ===== Setup note (remove once configured) ===== */
+  .setup-note{
+    background:#e8854a14; border:1px solid var(--orange);
+    border-radius:12px; padding:18px 20px; margin-bottom:20px;
+    font-size:0.88rem; line-height:1.6; color:var(--text);
+  }
+  .setup-note strong{color:var(--orange);}
+  .setup-note code{
+    background:#0e1014; padding:2px 7px; border-radius:5px;
+    font-family:'JetBrains Mono'; font-size:0.82rem; color:var(--green);
+  }
+
+  /* ===== Chapters list ===== */
+  .chapters{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 80px;
+  }
+  .section-head{margin-bottom:24px;}
+  .section-head h2{font-size:1.4rem; font-weight:700;}
+  .chapter-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;
+  }
+  .chapter-card{
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:12px;
+    padding:18px; display:flex; align-items:center; gap:14px;
+  }
+  .chapter-card .num{
+    font-family:'JetBrains Mono'; font-weight:700; color:var(--green);
+    font-size:1.1rem; min-width:32px;
+  }
+  .chapter-card .label{font-size:0.9rem; line-height:1.4;}
+  .chapter-card .pages{font-family:'JetBrains Mono'; font-size:0.72rem; color:var(--text-dim);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px; text-align:center; color:var(--text-dim); font-size:0.85rem;
+  }
+
+  @media (max-width: 900px){
+    .navlinks{display:none;}
+    .page-head h1{font-size:1.8rem;}
+    .chapter-grid{grid-template-columns:1fr;}
+    .viewer-panel iframe{height:70vh;}
+  }
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--green); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="index.html" class="logo">
+      <div class="tile">H₂O</div>
+      <span>Кабінет хімії · 10 клас</span>
+    </a>
+    <div class="navlinks">
+      <a href="index.html#topics">Теми</a>
+      <a href="index.html#resources">Матеріали</a>
+      <a href="pidruchnyk.html" class="active">Підручник</a>
+      <a href="#">Тести</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow mono">Друкований підручник</div>
+    <h1>Хімія, 10 клас</h1>
+    <p class="sub">Попель П. П., Крикля Л. С. — повний текст підручника для перегляду онлайн або завантаження.</p>
+  </div>
+
+  <div class="action-bar">
+    <!--
+      ЯК НАЛАШТУВАТИ:
+      1. Завантажте PDF на Google Drive
+      2. Поділитися → "Будь-хто з посиланням" → роль "Глядач"
+      3. Скопіюйте ID файлу з посилання (частина між /d/ та /view)
+      4. Вставте цей ID замість YOUR_FILE_ID у двох місцях нижче:
+         - в href кнопки "Завантажити PDF"
+         - в src iframe у блоці .viewer-panel
+    -->
+    <a href="https://drive.google.com/uc?export=download&id=1R1unjDEsJVwddKyURVcKF80psaztpkqW" class="btn btn-primary" download>
+      ⬇ Завантажити PDF
+    </a>
+    <a href="https://drive.google.com/uc?export=download&id=1R1unjDEsJVwddKyURVcKF80psaztpkqW" class="btn btn-ghost" target="_blank">
+      Відкрити в новій вкладці ↗
+    </a>
+    <span class="meta-pill">259 стор.</span>
+    <span class="meta-pill">11 МБ</span>
+  </div>
+
+  <div class="viewer-wrap">
+    <div class="viewer-panel">
+      <div class="setup-note">
+        <strong>Налаштування:</strong> щоб підручник відкривався тут, замініть <code>YOUR_FILE_ID</code> у коді сторінки (двічі вище та в src нижче) на ID вашого файлу з Google Drive. Після цього видаліть цей блок підказки.
+      </div>
+      <iframe
+        src="https://drive.google.com/file/d/YOUR_FILE_ID/preview"
+        allow="autoplay">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="chapters">
+    <div class="section-head">
+      <h2>Зміст підручника</h2>
+    </div>
+    <div class="chapter-grid">
+      <div class="chapter-card">
+        <div class="num">01</div>
+        <div>
+          <div class="label">Повторення основних питань курсу хімії</div>
+          <div class="pages">с. 6–24</div>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="num">02</div>
+        <div>
+          <div class="label">Неметалічні елементи та їхні сполуки</div>
+          <div class="pages">с. 25–78</div>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="num">03</div>
+        <div>
+          <div class="label">Початкові поняття про органічні сполуки</div>
+          <div class="pages">с. 79–96</div>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="num">04</div>
+        <div>
+          <div class="label">Вуглеводні</div>
+          <div class="pages">с. 97–164</div>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="num">05</div>
+        <div>
+          <div class="label">Оксигеновмісні органічні сполуки</div>
+          <div class="pages">с. 165–214</div>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="num">06</div>
+        <div>
+          <div class="label">Азотовмісні органічні сполуки</div>
+          <div class="pages">с. 215–248</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  Електронний кабінет хімії · 10 клас · 2026
+</footer>
+
+</body>
+</html>
