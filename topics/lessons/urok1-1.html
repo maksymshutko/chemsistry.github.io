@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Урок 1. Вуглеводні: метан, етан, етен, етин · Тема 1 · Хімія 10 клас</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../components/styles.css">
+<script src="../../components/components.js" defer></script>
+<style>
+  /* ===== Page header ===== */
+  .page-head{
+    max-width:880px; margin:0 auto;
+    padding:24px 32px 8px;
+  }
+  .page-head h1{
+    font-size:1.9rem; font-weight:800; letter-spacing:-0.01em; margin-bottom:14px;
+    line-height:1.25;
+  }
+
+  /* ===== Content wrapper ===== */
+  .content{
+    max-width:880px; margin:0 auto;
+    padding:24px 32px 100px;
+  }
+
+  /* ===== Block: text section ===== */
+  .block{margin-bottom:48px;}
+  .block-label{
+    font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--text-dim);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .block h2{font-size:1.3rem; font-weight:700; margin-bottom:14px; letter-spacing:-0.005em;}
+  .block h3{font-size:1.05rem; font-weight:600; margin:20px 0 10px; color:var(--green);}
+  .block p{color:#d6d9df; line-height:1.75; font-size:0.98rem; margin-bottom:14px;}
+  .block ul, .block ol{color:#d6d9df; line-height:1.75; font-size:0.98rem; margin:0 0 14px 20px;}
+  .block li{margin-bottom:6px;}
+  .formula-box{
+    background:var(--bg-soft); border:1px solid var(--line); border-left:3px solid var(--green);
+    border-radius:10px; padding:16px 20px; margin:16px 0;
+    font-family:'JetBrains Mono'; font-size:1.05rem; color:var(--green);
+  }
+  .formula-box .label{
+    font-family:'Inter'; font-size:0.78rem; color:var(--text-dim); margin-bottom:6px; display:block;
+  }
+
+  /* ===== Block: media (video/slides) ===== */
+  .media-frame{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:14px; box-shadow:0 24px 50px -28px rgba(0,0,0,0.5);
+  }
+  .media-frame iframe{
+    width:100%; aspect-ratio:16/9; border:none; border-radius:10px; background:#0e1014; display:block;
+  }
+  .media-caption{
+    font-size:0.85rem; color:var(--text-dim); margin-top:12px; padding:0 4px;
+  }
+
+  /* ===== Block: photo gallery ===== */
+  .gallery{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;
+  }
+  .gallery figure{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; margin:0;
+  }
+  .gallery img{width:100%; height:220px; object-fit:cover; display:block;}
+  .gallery figcaption{
+    font-size:0.8rem; color:var(--text-dim); padding:10px 14px;
+  }
+
+/* ===== Lesson nav (prev/next) ===== */
+  .lesson-nav{
+    display:flex; justify-content:space-between; gap:16px;
+    border-top:1px solid var(--line); padding-top:28px; margin-top:8px;
+  }
+  .nav-btn{
+    flex:1; max-width:48%;
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; text-decoration:none; color:var(--text);
+    transition:.2s; display:flex; flex-direction:column; gap:4px;
+  }
+  .nav-btn:hover{border-color:var(--green); transform:translateY(-2px);}
+  .nav-btn.next{text-align:right; margin-left:auto;}
+  .nav-btn .dir{font-family:'JetBrains Mono'; font-size:0.72rem; color:var(--text-dim);}
+  .nav-btn .ttl{font-size:0.88rem; font-weight:600; line-height:1.35;}
+
+  @media (max-width: 900px){
+    .page-head h1{font-size:1.5rem;}
+    .gallery{grid-template-columns:1fr;}
+    .lesson-nav{flex-direction:column;}
+    .nav-btn{max-width:100%;}
+  }
+
+  </style>
+</head>
+<body>
+
+<site-header depth="2"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="../../index.html">Головна</a><span class="sep">/</span>
+    <a href="../tema1.html">Тема 1</a><span class="sep">/</span>
+    <span class="current">Урок 1</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono">Тема 1 · Урок 1</div>
+    <h1>Первинний інструктаж з БЖД. Склад, властивості, застосування окремих представників вуглеводнів (метан, етан, етен, етин)</h1>
+  </div>
+
+  <div class="content">
+
+    <!-- ===== ТЕКСТ УРОКУ ===== -->
+    <div class="block">
+      <div class="block-label">📄 Теоретичний матеріал</div>
+
+      <h2>Інструктаж з безпеки життєдіяльності</h2>
+      <p>
+        Перед початком вивчення органічної хімії та проведення лабораторних дослідів необхідно
+        повторити правила безпечної поведінки в кабінеті хімії: правила роботи з нагрівальними
+        приборами, реактивами, скляним посудом, а також дії у разі виникнення надзвичайної ситуації.
+      </p>
+
+      <h3>Метан CH₄</h3>
+      <p>
+        Метан — найпростіший представник насичених вуглеводнів (алканів). Безбарвний газ без запаху,
+        легший за повітря, погано розчинний у воді. Є основним компонентом природного газу.
+      </p>
+      <div class="formula-box">
+        <span class="label">Структурна формула</span>
+        CH₄ — тетраедрична будова молекули, кут між зв'язками 109°28′
+      </div>
+
+      <h3>Етан C₂H₆</h3>
+      <p>
+        Етан — другий представник гомологічного ряду алканів. Застосовується як паливо та сировина
+        для отримання етену в нафтохімічній промисловості.
+      </p>
+
+      <h3>Етен (етилен) C₂H₄</h3>
+      <p>
+        Етен — найпростіший алкен, містить один подвійний зв'язок між атомами карбону. Безбарвний газ
+        із слабким запахом. Широко використовується для виробництва полімерів (поліетилену).
+      </p>
+
+      <h3>Етин (ацетилен) C₂H₂</h3>
+      <p>
+        Етин — найпростіший алкін з потрійним карбон-карбоновим зв'язком. Використовується для
+        автогенного зварювання та різання металів завдяки високій температурі згоряння.
+      </p>
+
+      <p><em>← Тут можете доповнити власний конспект, приклади реакцій, таблиці властивостей тощо.</em></p>
+    </div>
+
+    <!-- ===== ВІДЕО ===== -->
+    <div class="block">
+      <div class="block-label">🎬 Відео до уроку</div>
+      <div class="media-frame">
+        <a href="https://www.youtube.com/watch?v=29kpYZl7DTw" target="_blank" class="btn btn-primary">▶ Дивитись відео на YouTube</a>
+      </div>
+      <p class="media-caption">Первинний інструктаж з БЖД</p>
+    </div>
+
+    <!-- ===== ПРЕЗЕНТАЦІЯ ===== -->
+    <div class="block">
+      <div class="block-label">📊 Презентація до уроку</div>
+      <div class="media-frame">
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQXpJh5UJK7zSROojGr_rU7vuygAvjMaxf2vzQn3JEe-HrtR8768g99_crBhbL0BsRXghMIVzlsPh1x/pubembed?start=false&loop=false&delayms=15000" title="Презентація до уроку"></iframe>
+      </div>
+    </div>
+
+    <!-- ===== ФОТО ===== -->
+    <div class="block">
+      <div class="block-label">🖼️ Фото та схеми</div>
+      <div class="gallery">
+        <figure>
+          <img src="https://ua.mozaweb.com/en/mozaik3D/KEM/szerves/ch4/960.jpg" alt="Структурна формула метану" onerror="this.style.display='none'">
+          <figcaption>Просторова модель молекули метану CH₄</figcaption>
+        </figure>
+        <figure>
+          <img src="https://ua.mozaweb.com/uk/mozaik3D/KEM/szerves/etan/preview/Golyo.jpg" alt="Молекула етену" onerror="this.style.display='none'">
+          <figcaption>Просторова модель молекули етену</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- ===== НАВІГАЦІЯ МІЖ УРОКАМИ ===== -->
+    <div class="lesson-nav">
+      <a href="../tema1.html" class="nav-btn">
+        <span class="dir">← Усі уроки</span>
+        <span class="ttl">Тема 1. Теорія будови органічних сполук</span>
+      </a>
+      <a href="urok1-2.html" class="nav-btn next">
+        <span class="dir">Наступний урок →</span>
+        <span class="ttl">Урок 2. Оксигеновмісні та нітрогеновмісні речовини</span>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<site-footer></site-footer>
+
+</body>
+</html>

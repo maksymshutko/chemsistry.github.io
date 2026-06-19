@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Теорія будови органічних сполук · Тема 1 · Хімія 10 клас</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../components/styles.css">
+<script src="../../components/components.js" defer></script>
+<style>
+  /* ===== Page header ===== */
+  .page-head{
+    max-width:880px; margin:0 auto;
+    padding:24px 32px 8px;
+  }
+  .page-head h1{
+    font-size:1.9rem; font-weight:800; letter-spacing:-0.01em; margin-bottom:14px;
+    line-height:1.25;
+  }
+
+  /* ===== Content wrapper ===== */
+  .content{
+    max-width:880px; margin:0 auto;
+    padding:24px 32px 100px;
+  }
+
+  /* ===== Block: text section ===== */
+  .block{margin-bottom:48px;}
+  .block-label{
+    font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--text-dim);
+    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .block h2{font-size:1.3rem; font-weight:700; margin-bottom:14px; letter-spacing:-0.005em;}
+  .block h3{font-size:1.05rem; font-weight:600; margin:20px 0 10px; color:var(--green);}
+  .block p{color:#d6d9df; line-height:1.75; font-size:0.98rem; margin-bottom:14px;}
+  .block ul, .block ol{color:#d6d9df; line-height:1.75; font-size:0.98rem; margin:0 0 14px 20px;}
+  .block li{margin-bottom:6px;}
+  .formula-box{
+    background:var(--bg-soft); border:1px solid var(--line); border-left:3px solid var(--green);
+    border-radius:10px; padding:16px 20px; margin:16px 0;
+    font-family:'JetBrains Mono'; font-size:1.05rem; color:var(--green);
+  }
+  .formula-box .label{
+    font-family:'Inter'; font-size:0.78rem; color:var(--text-dim); margin-bottom:6px; display:block;
+  }
+
+  /* ===== Block: media (video/slides) ===== */
+  .media-frame{
+    background:var(--panel); border:1px solid var(--line); border-radius:16px;
+    padding:14px; box-shadow:0 24px 50px -28px rgba(0,0,0,0.5);
+  }
+  .media-frame iframe{
+    width:100%; aspect-ratio:16/9; border:none; border-radius:10px; background:#0e1014; display:block;
+  }
+  .media-caption{
+    font-size:0.85rem; color:var(--text-dim); margin-top:12px; padding:0 4px;
+  }
+
+  /* ===== Block: photo gallery ===== */
+  .gallery{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;
+  }
+  .gallery figure{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    overflow:hidden; margin:0;
+  }
+  .gallery img{width:100%; height:220px; object-fit:cover; display:block;}
+  .gallery figcaption{
+    font-size:0.8rem; color:var(--text-dim); padding:10px 14px;
+  }
+
+/* ===== Lesson nav (prev/next) ===== */
+  .lesson-nav{
+    display:flex; justify-content:space-between; gap:16px;
+    border-top:1px solid var(--line); padding-top:28px; margin-top:8px;
+  }
+  .nav-btn{
+    flex:1; max-width:48%;
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:12px;
+    padding:16px 18px; text-decoration:none; color:var(--text);
+    transition:.2s; display:flex; flex-direction:column; gap:4px;
+  }
+  .nav-btn:hover{border-color:var(--green); transform:translateY(-2px);}
+  .nav-btn.next{text-align:right; margin-left:auto;}
+  .nav-btn .dir{font-family:'JetBrains Mono'; font-size:0.72rem; color:var(--text-dim);}
+  .nav-btn .ttl{font-size:0.88rem; font-weight:600; line-height:1.35;}
+
+  @media (max-width: 900px){
+    .page-head h1{font-size:1.5rem;}
+    .gallery{grid-template-columns:1fr;}
+    .lesson-nav{flex-direction:column;}
+    .nav-btn{max-width:100%;}
+  }
+
+  </style>
+</head>
+<body>
+
+<site-header depth="2"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="../../index.html">Головна</a><span class="sep">/</span>
+    <a href="../tema1.html">Тема 1</a><span class="sep">/</span>
+    <span class="current">Урок 3</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono">Тема 1 · Урок 3</div>
+    <h1>Теорія будови органічних сполук. Залежність властивостей речовин від складу і хімічної будови молекул</h1>
+  </div>
+
+  <div class="content">
+
+    <!-- ===== ТЕКСТ УРОКУ ===== -->
+    <div class="block">
+      <div class="block-label">📄 Теоретичний матеріал</div>
+
+      
+      <h2>Теорія будови органічних сполук</h2>
+      <p>
+        Основні положення теорії хімічної будови О. М. Бутлерова: властивості речовини залежать не лише від її складу, а й від порядку з'єднання атомів у молекулі.
+      </p>
+      <p><em>← Тут можете додати власний конспект, формули, приклади реакцій, таблиці властивостей тощо.</em></p>
+    
+    </div>
+
+    <!-- ===== ВІДЕО ===== -->
+    <div class="block">
+      <div class="block-label">🎬 Відео до уроку</div>
+      <div class="setup-note">
+        <strong>Налаштування:</strong> вставте посилання на YouTube-відео. Скопіюйте ID з адреси відео
+        (частина після <code>watch?v=</code>) і вставте замість <code>YOUR_VIDEO_ID</code> в src нижче.
+      </div>
+      <div class="media-frame">
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Відео до уроку" allowfullscreen></iframe>
+      </div>
+      <p class="media-caption">Відео-пояснення або демонстрація досліду до уроку.</p>
+    </div>
+
+    <!-- ===== ПРЕЗЕНТАЦІЯ ===== -->
+    <div class="block">
+      <div class="block-label">📊 Презентація до уроку</div>
+      <div class="setup-note">
+        <strong>Налаштування:</strong> у Google Slides виберіть «Файл» → «Поділитися» → «Опублікувати в інтернеті»,
+        скопіюйте посилання embed і вставте замість <code>YOUR_SLIDES_EMBED_URL</code> в src нижче.
+      </div>
+      <div class="media-frame">
+        <iframe src="YOUR_SLIDES_EMBED_URL" title="Презентація до уроку"></iframe>
+      </div>
+    </div>
+
+    <!-- ===== ФОТО ===== -->
+    <div class="block">
+      <div class="block-label">🖼️ Фото та схеми</div>
+      <div class="setup-note">
+        <strong>Налаштування:</strong> замініть <code>YOUR_IMAGE_1.jpg</code> та <code>YOUR_IMAGE_2.jpg</code>
+        на назви своїх файлів зображень, завантажених поруч у тій самій папці сайту.
+      </div>
+      <div class="gallery">
+        <figure>
+          <img src="YOUR_IMAGE_1.jpg" alt="Схема до уроку" onerror="this.style.display='none'">
+          <figcaption>Підпис до зображення 1</figcaption>
+        </figure>
+        <figure>
+          <img src="YOUR_IMAGE_2.jpg" alt="Схема до уроку" onerror="this.style.display='none'">
+          <figcaption>Підпис до зображення 2</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- ===== НАВІГАЦІЯ МІЖ УРОКАМИ ===== -->
+    <div class="lesson-nav">
+      <a href="urok1-2.html" class="nav-btn">
+        <span class="dir">← Попередній</span>
+        <span class="ttl">Урок 2. Оксигеновмісні та нітрогеновмісні речовини</span>
+      </a>
+      <a href="urok1-4.html" class="nav-btn next">
+        <span class="dir">Наступний урок →</span>
+        <span class="ttl">Урок 4. Явище ізомерії та ізомери</span>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<site-footer></site-footer>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тема 1. Теорія будови органічних сполук · Хімія 10 клас</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../components/styles.css">
+<script src="../components/components.js" defer></script>
+<style>
+  /* ===== Page header ===== */
+  .page-head{
+    max-width:1180px; margin:0 auto;
+    padding:28px 32px 36px;
+  }
+  .page-head h1{
+    font-size:2.2rem; font-weight:800; letter-spacing:-0.01em; margin-bottom:12px;
+    max-width:720px;
+  }
+  .page-head .sub{color:var(--text-dim); font-size:1rem; max-width:620px; line-height:1.55;}
+  .progress-pill{
+    margin-top:18px; display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--text-dim);
+    border:1px solid var(--line); padding:8px 14px; border-radius:20px;
+  }
+
+  /* ===== Lessons list ===== */
+  .lessons{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 80px;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .lesson-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:22px 24px; display:flex; align-items:center; gap:20px;
+    text-decoration:none; color:inherit; transition:.2s;
+  }
+  .lesson-card:hover{
+    border-color:var(--green); transform:translateX(4px);
+    box-shadow:0 12px 28px -12px rgba(0,0,0,0.45);
+  }
+  .lesson-num{
+    font-family:'JetBrains Mono'; font-weight:700; font-size:1.4rem;
+    color:var(--green); min-width:46px;
+  }
+  .lesson-body{flex:1;}
+  .lesson-title{font-size:1rem; font-weight:600; margin-bottom:4px; line-height:1.35;}
+  .lesson-desc{font-size:0.85rem; color:var(--text-dim); line-height:1.5;}
+  .lesson-arrow{
+    font-size:1.2rem; color:var(--text-dim); transition:.2s; flex-shrink:0;
+  }
+  .lesson-card:hover .lesson-arrow{color:var(--green); transform:translateX(3px);}
+
+  @media (max-width: 900px){
+    .page-head h1{font-size:1.6rem;}
+    .lesson-card{padding:18px; gap:14px;}
+    .lesson-num{font-size:1.1rem; min-width:36px;}
+  }
+
+  </style>
+</head>
+<body>
+
+<site-header depth="1"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="index.html">Головна</a><span class="sep">/</span><span class="current">Тема 1</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono">Тема 1 · 7 уроків</div>
+    <h1>Теорія будови органічних сполук</h1>
+    <p class="sub">Залежність властивостей речовин від складу й будови молекул, явище ізомерії, типи карбон-карбонових зв'язків та класифікація органічних сполук.</p>
+    <div class="progress-pill">📚 <span>7 з 7 уроків додано</span></div>
+  </div>
+
+  <div class="lessons">
+    <a href="lessons/urok1-1.html" class="lesson-card">
+      <div class="lesson-num">01</div>
+      <div class="lesson-body">
+        <div class="lesson-title">Первинний інструктаж з БЖД. Склад, властивості, застосування окремих представників вуглеводнів</div>
+        <div class="lesson-desc">Метан, етан, етен, етин — базові представники класів вуглеводнів.</div>
+      </div>
+      <div class="lesson-arrow">→</div>
+    </a>
+
+    <a href="lessons/urok1-2.html" class="lesson-card">
+      <div class="lesson-num">02</div>
+      <div class="lesson-body">
+        <div class="lesson-title">Склад, властивості, застосування оксигеновмісних і нітрогеновмісних речовин</div>
+        <div class="lesson-desc">Метанол, етанол, гліцерол, етанова кислота, аміноетанова кислота.</div>
+      </div>
+      <div class="lesson-arrow">→</div>
+    </a>
+
+    <a href="lessons/urok1-3.html" class="lesson-card">
+      <div class="lesson-num">03</div>
+      <div class="lesson-body">
+        <div class="lesson-title">Теорія будови органічних сполук</div>
+        <div class="lesson-desc">Залежність властивостей речовин від складу і хімічної будови молекул.</div>
+      </div>
+      <div class="lesson-arrow">→</div>
+    </a>
+
+    <a href="lessons/urok1-4.html" class="lesson-card">
+      <div class="lesson-num">04</div>
+      <div class="lesson-body">
+        <div class="lesson-title">Поняття про явище ізомерії та ізомери</div>
+        <div class="lesson-desc">Структурна ізомерія органічних сполук.</div>
+      </div>
+      <div class="lesson-arrow">→</div>
+    </a>
+
+    <a href="lessons/urok1-5.html" class="lesson-card">
+      <div class="lesson-num">05</div>
+      <div class="lesson-body">
+        <div class="lesson-title">Ковалентні карбон-карбонові зв'язки у молекулах органічних сполук</div>
+        <div class="lesson-desc">Простий, подвійний, потрійний зв'язок. Класифікація органічних сполук.</div>
+      </div>
+      <div class="lesson-arrow">→</div>
+    </a>
+
+    <a href="lessons/urok1-6.html" class="lesson-card">
+      <div class="lesson-num">06</div>
+      <div class="lesson-body">
+        <div class="lesson-title">Розрахункові задачі</div>
+        <div class="lesson-desc">Виведення молекулярної формули речовини за масовими частками елементів.</div>
+      </div>
+      <div class="lesson-arrow">→</div>
+    </a>
+
+    <a href="lessons/urok1-7.html" class="lesson-card">
+      <div class="lesson-num">07</div>
+      <div class="lesson-body">
+        <div class="lesson-title">Самостійна робота з теми «Теорія будови органічних сполук»</div>
+        <div class="lesson-desc">Перевірка знань за матеріалом теми 1.</div>
+      </div>
+      <div class="lesson-arrow">→</div>
+    </a>
+  </div>
+</main>
+
+<site-footer></site-footer>
+
+</body>
+</html>
