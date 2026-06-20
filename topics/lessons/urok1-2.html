@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../components/styles.css">
 <script src="../../components/components.js" defer></script>
+<script src="../../components/quiz.js" defer></script>
 <style>
   /* ===== Page header ===== */
   .page-head{
@@ -115,20 +116,38 @@
 
   <div class="content">
 
+    <!-- ===== ТЕСТ ===== -->
+    <div class="block">
+    <div class="block-label">✅ Перевір свої знання з минулого уроку</div>
+
+     <div class="quiz">
+       <div class="quiz-question" data-correct="b">
+         <p class="q-text">Яка формула метану?</p>
+         <div class="q-options">
+           <button class="q-option" data-option="a">CH₂</button>
+           <button class="q-option" data-option="b">CH₄</button>
+           <button class="q-option" data-option="c">C₂H₆</button>
+         </div>
+         <p class="q-feedback"></p>
+       </div>
+     </div>
+     </div>
+
     <!-- ===== ТЕКСТ УРОКУ ===== -->
     <div class="block">
       <div class="block-label">📄 Теоретичний матеріал</div>
 
-      
       <h2>Оксигеновмісні та нітрогеновмісні органічні речовини</h2>
       <p>
         Метанол, етанол, гліцерол, етанова кислота — представники оксигеновмісних сполук. Аміноетанова кислота (гліцин) — найпростіша амінокислота, представник нітрогеновмісних органічних речовин.
       </p>
-      <p>Спирти — це сполуки, що містять <em>гідроксильну групу (-OH)</em>, сполучену з вуглеводневим радикалом.</p>
-      <p>Альдегіди можна впізнати за наявністю <em>альдегідної групи (-CHO)</em>, яка легко окиснюється.</p>
-      <p>Карбонові кислоти проявляють свої властивості завдяки <em>карбоксильній групі (-COOH)</em>.</p>
-      <p>Аміни — це органічні основи, характерною ознакою яких є <em>аміногрупа (-NH2)</em>.</p>
-    
+      <div class="formula-box">
+        <span class="label"></span>
+        <p>Спирти - це сполуки, що містять <em>гідроксильну групу (-OH)</em>, сполучену з вуглеводневим радикалом.</p>
+        <p>Альдегіди можна впізнати за наявністю <em>альдегідної групи (-CHO)</em>, яка легко окиснюється.</p>
+        <p>Карбонові кислоти проявляють свої властивості завдяки <em>карбоксильній групі (-COOH)</em>.</p>
+        <p>Аміни — це органічні основи, характерною ознакою яких є <em>аміногрупа (-NH2)</em>.</p>
+      </div>
     </div>
 
     <!-- ===== ПРЕЗЕНТАЦІЯ ===== -->
@@ -159,6 +178,20 @@
           <img src="https://ua.mozaweb.com/en/mozaik3D/KEM/szerves/glicin/960.jpg" alt="Гліцин" onerror="this.style.display='none'">
           <figcaption>Молекула гліцину</figcaption>
         </figure>
+      </div>
+    </div>
+
+    <!-- ===== ПЕРЕВІР СЕБЕ (питання для роздумів) ===== -->
+    <div class="block">
+      <div class="reflect-box">
+        <div class="block-label">💭 Запитання для самоперевірки</div>
+        <p>Спробуй відповісти на ці запитання, щоб перевірити свої знання з теми уроку:</p>
+        <ul>
+          <li>Які функціональні групи характерні для спиртів, альдегідів, карбонових кислот та амінів?</li>
+          <li>Як відрізнити метанол від етанолу за допомогою простого хімічного тесту?</li>
+          <li>Які властивості гліцеролу роблять його корисним у косметичній промисловості?</li>
+          <li>Чому аміноетанова кислота (гліцин) є важливою для живих організмів?</li>
+        </ul>
       </div>
     </div>
 
