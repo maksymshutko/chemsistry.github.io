@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../components/styles.css">
+<link rel="stylesheet" href="../../components/style_exam.css">
 <script src="../../components/components.js" defer></script>
 <style>
   /* ===== Page header ===== */
@@ -122,54 +123,145 @@
       
       <h2>Самостійна робота</h2>
       <p>
-        Перевірка знань за матеріалом теми 1: склад і будова органічних сполук, ізомерія, типи зв'язків, розрахункові задачі.
+        Перевірка знань за матеріалом теми 1: Склад і будова органічних сполук, ізомерія, типи зв'язків, розрахункові задачі.
       </p>
-      <p><em>← Тут можете додати власний конспект, формули, приклади реакцій, таблиці властивостей тощо.</em></p>
+
+      <div class="block">
+
+      <div class="worksheet">
+        <div class="worksheet-header">
+          <div class="worksheet-field">
+            <label>Прізвище, ім'я учня</label>
+            <input type="text" placeholder="">
+          </div>
+          <div class="worksheet-field">
+            <label>Клас</label>
+            <input type="text" placeholder="">
+          </div>
+          <div class="worksheet-field">
+            <label>Дата</label>
+            <input type="text" placeholder="">
+          </div>
+        </div>
+
+        <p style="color:var(--text-dim); font-size:0.9rem; margin-bottom:28px;">
+          Тема: Теорія будови органічних сполук. Ізомерія. &nbsp;·&nbsp; Максимальна оцінка: 12 балів
+        </p>
+
+        <!-- ===== ПОЧАТКОВИЙ РІВЕНЬ ===== -->
+        <span class="level-badge l1">Початковий рівень · 1–3 бали</span>
+
+        <div class="task">
+          <p class="task-title">1. Хто є творцем класичної теорії будови органічних сполук? <span class="task-points">(1 бал)</span></p>
+          <div class="test-options">
+            <label class="test-option"><input type="radio" name="q1"><span>а) Я. Берцеліус</span></label>
+            <label class="test-option"><input type="radio" name="q1"><span>б) О. Бутлеров</span></label>
+            <label class="test-option"><input type="radio" name="q1"><span>в) Д. Менделєєв</span></label>
+            <label class="test-option"><input type="radio" name="q1"><span>г) А. Лавуазьє</span></label>
+          </div>
+        </div>
+
+        <div class="task">
+          <p class="task-title">2. Яку валентність завжди виявляє Карбон в органічних сполуках? <span class="task-points">(1 бал)</span></p>
+          <div class="test-options">
+            <label class="test-option"><input type="radio" name="q2"><span>а) ІІ</span></label>
+            <label class="test-option"><input type="radio" name="q2"><span>б) ІІІ</span></label>
+            <label class="test-option"><input type="radio" name="q2"><span>в) IV</span></label>
+            <label class="test-option"><input type="radio" name="q2"><span>г) VI</span></label>
+          </div>
+        </div>
+
+        <div class="task">
+          <p class="task-title">3. Сполуки, що мають однаковий якісний і кількісний склад, але різну хімічну будову і властивості, називають: <span class="task-points">(1 бал)</span></p>
+          <div class="test-options">
+            <label class="test-option"><input type="radio" name="q3"><span>а) гомологами</span></label>
+            <label class="test-option"><input type="radio" name="q3"><span>б) ізомерами</span></label>
+            <label class="test-option"><input type="radio" name="q3"><span>в) аналогами</span></label>
+            <label class="test-option"><input type="radio" name="q3"><span>г) радикалами</span></label>
+          </div>
+        </div>
+
+        <!-- ===== СЕРЕДНІЙ РІВЕНЬ ===== -->
+        <span class="level-badge l2">Середній рівень · 4–6 балів</span>
+
+        <div class="task">
+          <p class="task-title">4. Сформулюйте перше положення теорії хімічної будови органічних сполук щодо порядку сполучення атомів у молекулах. <span class="task-points">(1,5 бали)</span></p>
+          <textarea class="answer-area" placeholder="Ваша відповідь..."></textarea>
+        </div>
+
+        <div class="task">
+          <p class="task-title">5. Установіть відповідність між молекулярною формулою речовини та її належністю до певного класу: <span class="task-points">(1,5 бали)</span></p>
+          <div class="match-row">
+            <span class="match-formula">1) C₃H₈</span>
+            <select>
+              <option value="">— оберіть —</option>
+              <option>А) Насичений вуглеводень (алкан)</option>
+              <option>Б) Оксигеновмісна сполука (спирт)</option>
+              <option>В) Ненасичений вуглеводень (алкін)</option>
+              <option>Г) Ненасичений вуглеводень (алкен)</option>
+            </select>
+          </div>
+          <div class="match-row">
+            <span class="match-formula">2) C₂H₅OH</span>
+            <select>
+              <option value="">— оберіть —</option>
+              <option>А) Насичений вуглеводень (алкан)</option>
+              <option>Б) Оксигеновмісна сполука (спирт)</option>
+              <option>В) Ненасичений вуглеводень (алкін)</option>
+              <option>Г) Ненасичений вуглеводень (алкен)</option>
+            </select>
+          </div>
+          <div class="match-row">
+            <span class="match-formula">3) C₄H₈</span>
+            <select>
+              <option value="">— оберіть —</option>
+              <option>А) Насичений вуглеводень (алкан)</option>
+              <option>Б) Оксигеновмісна сполука (спирт)</option>
+              <option>В) Ненасичений вуглеводень (алкін)</option>
+              <option>Г) Ненасичений вуглеводень (алкен)</option>
+            </select>
+          </div>
+          <div class="match-row">
+            <span class="match-formula">4) C₅H₈</span>
+            <select>
+              <option value="">— оберіть —</option>
+              <option>А) Насичений вуглеводень (алкан)</option>
+              <option>Б) Оксигеновмісна сполука (спирт)</option>
+              <option>В) Ненасичений вуглеводень (алкін)</option>
+              <option>Г) Ненасичений вуглеводень (алкен)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- ===== ДОСТАТНІЙ РІВЕНЬ ===== -->
+        <span class="level-badge l3">Достатній рівень · 7–9 балів</span>
+
+        <div class="task">
+          <p class="task-title">6. Для речовини з молекулярною формулою C₅H₁₂ (пентан) складіть повні або скорочені структурні формули усіх можливих ізомерів (усього 3 ізомери). Дайте назву кожному ізомеру за систематичною номенклатурою. <span class="task-points">(3 бали)</span></p>
+          <textarea class="answer-area" style="min-height:160px;" placeholder="Місце для розв'язання..."></textarea>
+        </div>
+
+        <!-- ===== ВИСОКИЙ РІВЕНЬ ===== -->
+        <span class="level-badge l4">Високий рівень · 10–12 балів</span>
+
+        <div class="task">
+          <p class="task-title">
+            7. До складу відомого екологічного розчинника входять Карбон, Гідроген та Оксиген.
+            Масова частка Карбону — 60,0%, Гідрогену — 13,33%. Відносна молекулярна маса речовини дорівнює 60.<br><br>
+            1. Обчисліть масову частку Оксигену в розчиннику.<br>
+            2. Виведіть молекулярну формулу цієї речовини.<br>
+            3. Складіть її скорочену структурну формулу та вкажіть назву сполуки.
+            <span class="task-points">(3 бали)</span>
+          </p>
+          <textarea class="answer-area" style="min-height:160px;" placeholder="Розв'язання..."></textarea>
+        </div>
+
+        <div class="worksheet-actions">
+          <button class="btn btn-ghost" onclick="window.print()">🖨️ Роздрукувати</button>
+        </div>
+      </div>
+    </div>
     
-    </div>
-
-    <!-- ===== ВІДЕО ===== -->
-    <div class="block">
-      <div class="block-label">🎬 Відео до уроку</div>
-      <div class="setup-note">
-        <strong>Налаштування:</strong> вставте посилання на YouTube-відео. Скопіюйте ID з адреси відео
-        (частина після <code>watch?v=</code>) і вставте замість <code>YOUR_VIDEO_ID</code> в src нижче.
-      </div>
-      <div class="media-frame">
-        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Відео до уроку" allowfullscreen></iframe>
-      </div>
-      <p class="media-caption">Відео-пояснення або демонстрація досліду до уроку.</p>
-    </div>
-
-    <!-- ===== ПРЕЗЕНТАЦІЯ ===== -->
-    <div class="block">
-      <div class="block-label">📊 Презентація до уроку</div>
-      <div class="setup-note">
-        <strong>Налаштування:</strong> у Google Slides виберіть «Файл» → «Поділитися» → «Опублікувати в інтернеті»,
-        скопіюйте посилання embed і вставте замість <code>YOUR_SLIDES_EMBED_URL</code> в src нижче.
-      </div>
-      <div class="media-frame">
-        <iframe src="YOUR_SLIDES_EMBED_URL" title="Презентація до уроку"></iframe>
-      </div>
-    </div>
-
-    <!-- ===== ФОТО ===== -->
-    <div class="block">
-      <div class="block-label">🖼️ Фото та схеми</div>
-      <div class="setup-note">
-        <strong>Налаштування:</strong> замініть <code>YOUR_IMAGE_1.jpg</code> та <code>YOUR_IMAGE_2.jpg</code>
-        на назви своїх файлів зображень, завантажених поруч у тій самій папці сайту.
-      </div>
-      <div class="gallery">
-        <figure>
-          <img src="YOUR_IMAGE_1.jpg" alt="Схема до уроку" onerror="this.style.display='none'">
-          <figcaption>Підпис до зображення 1</figcaption>
-        </figure>
-        <figure>
-          <img src="YOUR_IMAGE_2.jpg" alt="Схема до уроку" onerror="this.style.display='none'">
-          <figcaption>Підпис до зображення 2</figcaption>
-        </figure>
-      </div>
     </div>
 
     <!-- ===== НАВІГАЦІЯ МІЖ УРОКАМИ ===== -->
