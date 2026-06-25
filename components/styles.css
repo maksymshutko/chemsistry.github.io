@@ -199,7 +199,59 @@ td code, td .formula-cell{
 }
 
 /* ===== Footer ===== */
+/* ===== Footer (rich) ===== */
 footer{
   border-top:1px solid var(--line);
-  padding:32px; text-align:center; color:var(--text-dim); font-size:0.85rem;
+  background:var(--bg-soft);
+  padding:56px 32px 28px;
+  margin-top:40px;
+}
+.footer-inner{
+  max-width:1180px; margin:0 auto;
+}
+.footer-grid{
+  display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px;
+  margin-bottom:40px;
+}
+.footer-col h4{
+  font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--green);
+  text-transform:uppercase; letter-spacing:0.06em; margin-bottom:16px;
+}
+.footer-col p{
+  color:var(--text-dim); font-size:0.88rem; line-height:1.6; margin-bottom:0;
+}
+.footer-col ul{
+  list-style:none; display:flex; flex-direction:column; gap:10px;
+}
+.footer-col a{
+  color:var(--text-dim); text-decoration:none; font-size:0.88rem; transition:color .2s;
+}
+.footer-col a:hover{color:var(--green);}
+.footer-brand{
+  display:flex; align-items:center; gap:10px; margin-bottom:14px;
+}
+.footer-brand .tile{
+  width:30px; height:30px; border-radius:7px;
+  background:linear-gradient(155deg, var(--green), #5d8a4a);
+  display:flex; align-items:center; justify-content:center;
+  font-family:'JetBrains Mono', monospace; font-weight:700; font-size:0.72rem;
+  color:#10130f; flex-shrink:0;
+}
+.footer-brand span{font-weight:700; font-size:0.95rem; color:var(--text);}
+.footer-contact-item{
+  display:flex; align-items:flex-start; gap:8px; font-size:0.88rem; color:var(--text-dim);
+  margin-bottom:10px; line-height:1.5;
+}
+.footer-bottom{
+  border-top:1px solid var(--line); padding-top:20px;
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+  font-size:0.8rem; color:var(--text-dim);
+}
+
+@media (max-width: 900px){
+  .footer-grid{grid-template-columns:1fr 1fr; gap:28px;}
+  .footer-bottom{flex-direction:column; align-items:flex-start; text-align:left;}
+}
+@media (max-width: 560px){
+  .footer-grid{grid-template-columns:1fr;}
 }
