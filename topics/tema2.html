@@ -7,59 +7,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../icon/apple-touch-icon.png">
 <link rel="stylesheet" href="../components/styles.css">
+<link rel="stylesheet" href="../components/topics.css">
 <script src="../components/components.js" defer></script>
-<style>
-  /* ===== Page header ===== */
-  .page-head{
-    max-width:1180px; margin:0 auto;
-    padding:28px 32px 36px;
-  }
-  .page-head h1{
-    font-size:2.2rem; font-weight:800; letter-spacing:-0.01em; margin-bottom:12px;
-    max-width:720px;
-  }
-  .page-head .sub{color:var(--text-dim); font-size:1rem; max-width:620px; line-height:1.55;}
-  .progress-pill{
-    margin-top:18px; display:inline-flex; align-items:center; gap:10px;
-    font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--text-dim);
-    border:1px solid var(--line); padding:8px 14px; border-radius:20px;
-  }
-
-  /* ===== Lessons list ===== */
-  .lessons{
-    max-width:1180px; margin:0 auto;
-    padding:0 32px 80px;
-    display:flex; flex-direction:column; gap:12px;
-  }
-  .lesson-card{
-    background:var(--panel); border:1px solid var(--line); border-radius:14px;
-    padding:22px 24px; display:flex; align-items:center; gap:20px;
-    text-decoration:none; color:inherit; transition:.2s;
-  }
-  .lesson-card:hover{
-    border-color:var(--green); transform:translateX(4px);
-    box-shadow:0 12px 28px -12px rgba(0,0,0,0.45);
-  }
-  .lesson-num{
-    font-family:'JetBrains Mono'; font-weight:700; font-size:1.4rem;
-    color:var(--green); min-width:46px;
-  }
-  .lesson-body{flex:1;}
-  .lesson-title{font-size:1rem; font-weight:600; margin-bottom:4px; line-height:1.35;}
-  .lesson-desc{font-size:0.85rem; color:var(--text-dim); line-height:1.5;}
-  .lesson-arrow{
-    font-size:1.2rem; color:var(--text-dim); transition:.2s; flex-shrink:0;
-  }
-  .lesson-card:hover .lesson-arrow{color:var(--green); transform:translateX(3px);}
-
-  @media (max-width: 900px){
-    .page-head h1{font-size:1.6rem;}
-    .lesson-card{padding:18px; gap:14px;}
-    .lesson-num{font-size:1.1rem; min-width:36px;}
-  }
-
-  </style>
 </head>
 <body>
 
@@ -74,7 +28,7 @@
     <div class="eyebrow mono">Тема 2 · 12 уроків</div>
     <h1>Вуглеводні</h1>
     <p class="sub">Алкани, алкени, алкіни, арени — гомологічні ряди, номенклатура, властивості та застосування вуглеводнів</p>
-    <div class="progress-pill">📚 <span>0 з 12 уроків додано</span></div>
+    <div class="progress-pill">📚 <span>1 з 12 уроків додано</span></div>
   </div>
 
   <div class="lessons">
