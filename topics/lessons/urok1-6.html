@@ -9,94 +9,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../components/styles.css">
 <link rel="stylesheet" href="../../components/style_exam.css">
+<link rel="stylesheet" href="../../components/lesson.css">
+<script src="../../components/site-map.js" defer></script>
+<script src="../../components/lesson-nav.js" defer></script>
 <script src="../../components/components.js" defer></script>
-<style>
-  /* ===== Page header ===== */
-  .page-head{
-    max-width:880px; margin:0 auto;
-    padding:24px 32px 8px;
-  }
-  .page-head h1{
-    font-size:1.9rem; font-weight:800; letter-spacing:-0.01em; margin-bottom:14px;
-    line-height:1.25;
-  }
-
-  /* ===== Content wrapper ===== */
-  .content{
-    max-width:880px; margin:0 auto;
-    padding:24px 32px 100px;
-  }
-
-  /* ===== Block: text section ===== */
-  .block{margin-bottom:48px;}
-  .block-label{
-    font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--text-dim);
-    text-transform:uppercase; letter-spacing:0.06em; margin-bottom:14px;
-    display:flex; align-items:center; gap:8px;
-  }
-  .block h2{font-size:1.3rem; font-weight:700; margin-bottom:14px; letter-spacing:-0.005em;}
-  .block h3{font-size:1.05rem; font-weight:600; margin:20px 0 10px; color:var(--green);}
-  .block p{color:#d6d9df; line-height:1.75; font-size:0.98rem; margin-bottom:14px;}
-  .block ul, .block ol{color:#d6d9df; line-height:1.75; font-size:0.98rem; margin:0 0 14px 20px;}
-  .block li{margin-bottom:6px;}
-  .formula-box{
-    background:var(--bg-soft); border:1px solid var(--line); border-left:3px solid var(--green);
-    border-radius:10px; padding:16px 20px; margin:16px 0;
-    font-family:'JetBrains Mono'; font-size:1.05rem; color:var(--green);
-  }
-  .formula-box .label{
-    font-family:'Inter'; font-size:0.78rem; color:var(--text-dim); margin-bottom:6px; display:block;
-  }
-
-  /* ===== Block: media (video/slides) ===== */
-  .media-frame{
-    background:var(--panel); border:1px solid var(--line); border-radius:16px;
-    padding:14px; box-shadow:0 24px 50px -28px rgba(0,0,0,0.5);
-  }
-  .media-frame iframe{
-    width:100%; aspect-ratio:16/9; border:none; border-radius:10px; background:#0e1014; display:block;
-  }
-  .media-caption{
-    font-size:0.85rem; color:var(--text-dim); margin-top:12px; padding:0 4px;
-  }
-
-  /* ===== Block: photo gallery ===== */
-  .gallery{
-    display:grid; grid-template-columns:repeat(2, 1fr); gap:12px;
-  }
-  .gallery figure{
-    background:var(--panel); border:1px solid var(--line); border-radius:12px;
-    overflow:hidden; margin:0;
-  }
-  .gallery img{width:100%; height:220px; object-fit:cover; display:block;}
-  .gallery figcaption{
-    font-size:0.8rem; color:var(--text-dim); padding:10px 14px;
-  }
-
-/* ===== Lesson nav (prev/next) ===== */
-  .lesson-nav{
-    display:flex; justify-content:space-between; gap:16px;
-    border-top:1px solid var(--line); padding-top:28px; margin-top:8px;
-  }
-  .nav-btn{
-    flex:1; max-width:48%;
-    background:var(--bg-soft); border:1px solid var(--line); border-radius:12px;
-    padding:16px 18px; text-decoration:none; color:var(--text);
-    transition:.2s; display:flex; flex-direction:column; gap:4px;
-  }
-  .nav-btn:hover{border-color:var(--green); transform:translateY(-2px);}
-  .nav-btn.next{text-align:right; margin-left:auto;}
-  .nav-btn .dir{font-family:'JetBrains Mono'; font-size:0.72rem; color:var(--text-dim);}
-  .nav-btn .ttl{font-size:0.88rem; font-weight:600; line-height:1.35;}
-
-  @media (max-width: 900px){
-    .page-head h1{font-size:1.5rem;}
-    .gallery{grid-template-columns:1fr;}
-    .lesson-nav{flex-direction:column;}
-    .nav-btn{max-width:100%;}
-  }
-
-  </style>
 </head>
 <body>
 
@@ -209,16 +125,7 @@
     </div>
 
     <!-- ===== НАВІГАЦІЯ МІЖ УРОКАМИ ===== -->
-    <div class="lesson-nav">
-      <a href="urok1-5.html" class="nav-btn">
-        <span class="dir">← Попередній</span>
-        <span class="ttl">Урок 5. Карбон-карбонові зв'язки</span>
-      </a>
-      <a href="urok1-7.html" class="nav-btn next">
-        <span class="dir">Наступний урок →</span>
-        <span class="ttl">Урок 7. Самостійна робота</span>
-      </a>
-    </div>
+    <lesson-nav tema="tema1" lesson="urok1-6.html"></lesson-nav>
 
   </div>
 </main>
