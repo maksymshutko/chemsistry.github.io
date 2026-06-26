@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Глосарій термінів · Хімія 10 клас</title>
+<link rel="icon" type="image/x-icon" href="icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="icon/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="components/styles.css">
+<link rel="stylesheet" href="components/lesson.css">
+<script src="components/components.js" defer></script>
+<style>
+  /* ===== Glossary-specific styles ===== */
+  .glossary-search{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 32px;
+  }
+  .search-box{
+    position:relative; max-width:480px;
+  }
+  .search-box input{
+    width:100%; background:var(--bg-soft); border:1px solid var(--line); border-radius:12px;
+    padding:13px 16px 13px 42px; color:var(--text); font-family:'Inter'; font-size:0.95rem;
+    transition:.2s;
+  }
+  .search-box input:focus{outline:none; border-color:var(--green);}
+  .search-box .icon{
+    position:absolute; left:14px; top:50%; transform:translateY(-50%);
+    color:var(--text-dim); font-size:0.95rem; pointer-events:none;
+  }
+  .search-meta{
+    font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--text-dim);
+    margin-top:10px;
+  }
+
+  .glossary-wrap{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 80px;
+  }
+
+  .term-group{margin-bottom:48px;}
+  .term-group-head{
+    display:flex; align-items:baseline; gap:14px; margin-bottom:20px;
+    padding-bottom:12px; border-bottom:1px solid var(--line);
+  }
+  .term-group-head h2{
+    font-size:1.25rem; font-weight:700; letter-spacing:-0.005em;
+  }
+  .term-group-head .tema-link{
+    font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--green);
+    text-decoration:none;
+  }
+  .term-group-head .tema-link:hover{text-decoration:underline;}
+
+  .term-grid{
+    display:grid; grid-template-columns:repeat(2, 1fr); gap:14px;
+  }
+  .term-card{
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:12px;
+    padding:18px 20px; transition:.2s;
+  }
+  .term-card:hover{border-color:var(--green);}
+  .term-name{
+    font-family:'JetBrains Mono'; font-weight:700; font-size:0.95rem; color:var(--green);
+    margin-bottom:8px;
+  }
+  .term-def{
+    font-size:0.9rem; color:#d6d9df; line-height:1.6; margin-bottom:10px;
+  }
+  .term-source{
+    font-size:0.78rem; color:var(--text-dim); text-decoration:none;
+    display:inline-flex; align-items:center; gap:4px;
+  }
+  .term-source:hover{color:var(--green);}
+
+  .no-results{
+    text-align:center; padding:60px 20px; color:var(--text-dim); display:none;
+  }
+  .no-results.show{display:block;}
+
+  .term-card.hidden{display:none;}
+  .term-group.hidden{display:none;}
+
+  @media (max-width: 900px){
+    .term-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<site-header depth="0"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="index.html">Головна</a><span class="sep">/</span>
+    <span class="current">Глосарій</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono">Довідковий матеріал</div>
+    <h1 class="tight">Глосарій термінів</h1>
+  </div>
+
+  <div class="glossary-search">
+    <div class="search-box">
+      <span class="icon">🔍</span>
+      <input type="text" id="glossary-search-input" placeholder="Пошук терміну...">
+    </div>
+    <div class="search-meta" id="search-meta"></div>
+  </div>
+
+  <div class="glossary-wrap" id="glossary-wrap">
+
+    <!-- ===== ТЕМА 1 ===== -->
+    <div class="term-group" data-tema="tema1">
+      <div class="term-group-head">
+        <h2>Тема 1 · Теорія будови органічних сполук</h2>
+        <a href="topics/tema1.html" class="tema-link">Перейти до теми →</a>
+      </div>
+      <div class="term-grid">
+
+        <div class="term-card">
+          <div class="term-name">Теорія хімічної будови</div>
+          <div class="term-def">Теорія, створена О. Бутлеровим, яка пояснює залежність властивостей речовини від порядку з'єднання атомів у молекулі.</div>
+          <a href="topics/lessons/urok1-3.html" class="term-source">→ Урок 3</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Ізомери</div>
+          <div class="term-def">Сполуки з однаковою молекулярною формулою, але різною хімічною будовою чи розташуванням атомів у просторі.</div>
+          <a href="topics/lessons/urok1-4.html" class="term-source">→ Урок 4</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Ізомерія</div>
+          <div class="term-def">Явище існування ізомерів — речовин з однаковим складом, але різними властивостями через різну будову.</div>
+          <a href="topics/lessons/urok1-4.html" class="term-source">→ Урок 4</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Структурна ізомерія</div>
+          <div class="term-def">Тип ізомерії, за якого атоми в молекулі з'єднані в різній послідовності (інший порядок зв'язків).</div>
+          <a href="topics/lessons/urok1-4.html" class="term-source">→ Урок 4</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Просторова ізомерія (стереоізомерія)</div>
+          <div class="term-def">Тип ізомерії, за якого атоми з'єднані в однаковій послідовності, але по-різному орієнтовані в просторі.</div>
+          <a href="topics/lessons/urok1-4.html" class="term-source">→ Урок 4</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">цис-/транс-ізомери</div>
+          <div class="term-def">Геометричні ізомери: у цис-формі однакові замісники розташовані по один бік подвійного зв'язку, у транс-формі — по різні боки.</div>
+          <a href="topics/lessons/urok1-4.html" class="term-source">→ Урок 4</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Простий (одинарний) зв'язок</div>
+          <div class="term-def">Карбон-карбоновий зв'язок, утворений однією спільною електронною парою (σ-зв'язок). Дозволяє вільне обертання атомів.</div>
+          <a href="topics/lessons/urok1-5.html" class="term-source">→ Урок 5</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Подвійний зв'язок</div>
+          <div class="term-def">Карбон-карбоновий зв'язок із однієї σ- та однієї π-сполуки. Реакційноздатніший за простий, обертання неможливе.</div>
+          <a href="topics/lessons/urok1-5.html" class="term-source">→ Урок 5</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Потрійний зв'язок</div>
+          <div class="term-def">Карбон-карбоновий зв'язок із однієї σ- та двох π-сполук. Найкоротший, найміцніший і найреакційноздатніший тип зв'язку.</div>
+          <a href="topics/lessons/urok1-5.html" class="term-source">→ Урок 5</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Насичені (граничні) сполуки</div>
+          <div class="term-def">Органічні сполуки, що містять лише прості зв'язки між атомами карбону (наприклад, алкани).</div>
+          <a href="topics/lessons/urok1-5.html" class="term-source">→ Урок 5</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Ненасичені сполуки</div>
+          <div class="term-def">Органічні сполуки, що містять один або кілька подвійних чи потрійних зв'язків (алкени, алкіни).</div>
+          <a href="topics/lessons/urok1-5.html" class="term-source">→ Урок 5</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Емпірична (найпростіша) формула</div>
+          <div class="term-def">Формула, що показує найпростіше цілочисельне співвідношення атомів елементів у речовині.</div>
+          <a href="topics/lessons/urok1-6.html" class="term-source">→ Урок 6</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== ТЕМА 2 ===== -->
+    <div class="term-group" data-tema="tema2">
+      <div class="term-group-head">
+        <h2>Тема 2 · Вуглеводні</h2>
+        <a href="topics/tema2.html" class="tema-link">Перейти до теми →</a>
+      </div>
+      <div class="term-grid">
+
+        <div class="term-card">
+          <div class="term-name">Вуглеводні</div>
+          <div class="term-def">Органічні сполуки, молекули яких складаються лише з атомів карбону і гідрогену.</div>
+          <a href="topics/lessons/urok2-1.html" class="term-source">→ Урок 1</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Алкани</div>
+          <div class="term-def">Насичені вуглеводні з відкритим карбоновим ланцюгом, загальна формула CₙH₂ₙ₊₂.</div>
+          <a href="topics/lessons/urok2-1.html" class="term-source">→ Урок 1</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Гомологічний ряд</div>
+          <div class="term-def">Послідовність сполук одного класу, кожна з яких відрізняється від попередньої на групу –CH₂–.</div>
+          <a href="topics/lessons/urok2-1.html" class="term-source">→ Урок 1</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">sp³-гібридизація</div>
+          <div class="term-def">Стан атома карбону в алканах, за якого утворюються 4 однакові гібридні орбіталі, спрямовані до вершин тетраедра.</div>
+          <a href="topics/lessons/urok2-1.html" class="term-source">→ Урок 1</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Систематична номенклатура (IUPAC)</div>
+          <div class="term-def">Міжнародна система правил для побудови однозначних назв органічних сполук.</div>
+          <a href="topics/lessons/urok2-1.html" class="term-source">→ Урок 1</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Алкени</div>
+          <div class="term-def">Ненасичені вуглеводні з одним подвійним зв'язком у молекулі, загальна формула CₙH₂ₙ.</div>
+          <a href="topics/lessons/urok2-3.html" class="term-source">→ Урок 3</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">sp²-гібридизація</div>
+          <div class="term-def">Стан атома карбону біля подвійного зв'язку, за якого утворюються 3 гібридні орбіталі в одній площині.</div>
+          <a href="topics/lessons/urok2-3.html" class="term-source">→ Урок 3</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Реакція приєднання</div>
+          <div class="term-def">Хімічна реакція, за якої дві або більше молекул з'єднуються в одну без утворення побічних продуктів — типова для алкенів.</div>
+          <a href="topics/lessons/urok2-3.html" class="term-source">→ Урок 3</a>
+        </div>
+
+        <div class="term-card">
+          <div class="term-name">Полімеризація</div>
+          <div class="term-def">Реакція з'єднання багатьох однакових молекул (мономерів) у довгий ланцюг (полімер).</div>
+          <a href="topics/lessons/urok2-3.html" class="term-source">→ Урок 3</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="no-results" id="no-results">
+      <div style="font-size:2rem; margin-bottom:14px; opacity:0.6;">🔍</div>
+      <p>Нічого не знайдено. Спробуй інший запит.</p>
+    </div>
+
+  </div>
+</main>
+
+<site-footer depth="0"></site-footer>
+
+<script>
+  const searchInput = document.getElementById('glossary-search-input');
+  const termCards = document.querySelectorAll('.term-card');
+  const termGroups = document.querySelectorAll('.term-group');
+  const noResults = document.getElementById('no-results');
+  const searchMeta = document.getElementById('search-meta');
+  const totalTerms = termCards.length;
+
+  function normalize(str) {
+    return str.toLowerCase().trim();
+  }
+
+  function filterTerms() {
+    const query = normalize(searchInput.value);
+    let visibleCount = 0;
+
+    termGroups.forEach(group => {
+      let groupHasVisible = false;
+      const cardsInGroup = group.querySelectorAll('.term-card');
+
+      cardsInGroup.forEach(card => {
+        const name = normalize(card.querySelector('.term-name').textContent);
+        const def = normalize(card.querySelector('.term-def').textContent);
+        const matches = query === '' || name.includes(query) || def.includes(query);
+
+        card.classList.toggle('hidden', !matches);
+        if (matches) {
+          groupHasVisible = true;
+          visibleCount++;
+        }
+      });
+
+      group.classList.toggle('hidden', !groupHasVisible);
+    });
+
+    noResults.classList.toggle('show', visibleCount === 0);
+
+    if (query === '') {
+      searchMeta.textContent = `Усього термінів: ${totalTerms}`;
+    } else {
+      searchMeta.textContent = `Знайдено: ${visibleCount} з ${totalTerms}`;
+    }
+  }
+
+  searchInput.addEventListener('input', filterTerms);
+  filterTerms();
+</script>
+
+</body>
+</html>

@@ -14,6 +14,7 @@ class SiteHeader extends HTMLElement {
             <a href="${root}index.html#topics">Теми</a>
             <a href="${root}index.html#resources">Матеріали</a>
             <a href="${root}pidruchnyk.html">Підручник</a>
+            <a href="${root}glossary.html">Глосарій</a>
             <a href="#">Тести</a>
           </div>
         </nav>
@@ -46,6 +47,7 @@ class SiteFooter extends HTMLElement {
                 <li><a href="${root}index.html">Головна</a></li>
                 <li><a href="${root}index.html#topics">Теми курсу</a></li>
                 <li><a href="${root}pidruchnyk.html">Підручник</a></li>
+                <li><a href="${root}glossary.html">Глосарій</a></li>
               </ul>
             </div>
 
