@@ -32,9 +32,21 @@ class PeriodicTable extends HTMLElement {
     this.innerHTML = `
       <div class="pt-wrap">
         <div class="pt-legend" id="pt-legend"></div>
-        <div class="pt-grid" id="pt-grid"></div>
-        <div class="pt-f-block" id="pt-f-block"></div>
-        <div class="pt-detail" id="pt-detail"></div>
+        <div class="pt-layout">
+          <div class="pt-tables">
+            <div class="pt-grid-wrap">
+              <div class="pt-period-labels" id="pt-period-labels"></div>
+              <div class="pt-grid" id="pt-grid"></div>
+            </div>
+            <div class="pt-f-block-wrap">
+              <div class="pt-f-block-labels" id="pt-f-block-labels"></div>
+              <div class="pt-f-block" id="pt-f-block"></div>
+            </div>
+          </div>
+          <div class="pt-detail" id="pt-detail">
+            <div class="pt-detail-empty">Натисніть на елемент, щоб побачити детальну інформацію</div>
+          </div>
+        </div>
       </div>
     `;
 
@@ -51,15 +63,30 @@ class PeriodicTable extends HTMLElement {
     });
 
     this.renderLegend();
+    this.renderPeriodLabels();
     this.renderMainGrid();
     this.renderFBlock();
+  }
+
+  renderPeriodLabels() {
+    const labels = this.querySelector('#pt-period-labels');
+    let html = '';
+    for (let period = 1; period <= 7; period++) {
+      html += `<div class="pt-period-num">${period}</div>`;
+    }
+    labels.innerHTML = html;
+
+    const fLabels = this.querySelector('#pt-f-block-labels');
+    fLabels.innerHTML = `
+      <div class="pt-period-num">6*</div>
+      <div class="pt-period-num">7*</div>
+    `;
   }
 
   renderLegend() {
     const legend = this.querySelector('#pt-legend');
     legend.innerHTML = Object.entries(CATEGORY_LABELS).map(([key, label]) => `
-      <div class="pt-legend-item">
-        <span class="pt-legend-swatch cat-${key}"></span>
+      <div class="pt-legend-item cat-${key}">
         <span>${label}</span>
       </div>
     `).join('');
@@ -139,9 +166,12 @@ class PeriodicTable extends HTMLElement {
   showDetail(el) {
     const detail = this.querySelector('#pt-detail');
     if (!el) {
-      detail.classList.remove('show');
+      detail.innerHTML = `<div class="pt-detail-empty">Натисніть на елемент, щоб побачити детальну інформацію</div>`;
       return;
     }
+
+    // Знаходимо сусідів по періоду (попередній/наступний елемент того ж рядка)
+    const neighbors = this.findNeighbors(el);
 
     detail.innerHTML = `
       <div class="pt-detail-head">
@@ -154,6 +184,7 @@ class PeriodicTable extends HTMLElement {
           <div class="pt-detail-category">${CATEGORY_LABELS[el.category] || el.category}</div>
         </div>
       </div>
+
       <div class="pt-detail-grid">
         <div class="pt-detail-stat">
           <div class="label">Атомна маса</div>
@@ -168,12 +199,93 @@ class PeriodicTable extends HTMLElement {
           <div class="value">${el.group ?? '—'}</div>
         </div>
         <div class="pt-detail-stat">
-          <div class="label">Електронна конфігурація</div>
-          <div class="value" style="font-family:'JetBrains Mono'; font-size:0.85rem;">${el.electronConfig || '—'}</div>
+          <div class="label">Категорія</div>
+          <div class="value" style="font-size:0.82rem;">${CATEGORY_LABELS[el.category] || el.category}</div>
         </div>
       </div>
+
+      <div class="pt-detail-divider"></div>
+
+      <div class="pt-detail-stat" style="margin-bottom:16px;">
+        <div class="label">Електронна конфігурація</div>
+        <div class="value pt-detail-econfig">${el.electronConfig || '—'}</div>
+      </div>
+
+      ${this.electronShellHTML(el)}
+
+      ${neighbors.length > 0 ? `
+        <div class="pt-detail-divider"></div>
+        <div class="pt-detail-stat" style="margin-bottom:10px;">
+          <div class="label">Сусіди в періоді ${el.period}</div>
+        </div>
+        <div class="pt-neighbors">
+          ${neighbors.map(n => `
+            <button class="pt-neighbor-chip cat-${n.category}" data-number="${n.number}">
+              <span class="n-num">${n.number}</span>
+              <span class="n-symbol">${n.symbol}</span>
+            </button>
+          `).join('')}
+        </div>
+      ` : ''}
     `;
-    detail.classList.add('show');
+
+    // Клік на сусіда — показує його деталі (і підсвічує в таблиці)
+    detail.querySelectorAll('.pt-neighbor-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const number = parseInt(chip.dataset.number);
+        const neighborEl = (window.ELEMENTS_DATA || []).find(e => e.number === number);
+        const cell = this.querySelector(`.pt-cell[data-number="${number}"]`);
+        if (cell) {
+          this.querySelectorAll('.pt-cell.selected').forEach(c => c.classList.remove('selected'));
+          cell.classList.add('selected');
+        }
+        this.showDetail(neighborEl);
+      });
+    });
+  }
+
+  /**
+   * Дуже наближена візуалізація електронних оболонок (K, L, M...) на основі
+   * номера елемента — спрощена модель заповнення 2,8,8,18... для наочності,
+   * не повна квантова модель.
+   */
+  electronShellHTML(el) {
+    const shellCapacities = [2, 8, 8, 18, 18, 32, 32];
+    let remaining = el.number;
+    const shells = [];
+    for (const cap of shellCapacities) {
+      if (remaining <= 0) break;
+      const electronsInShell = Math.min(cap, remaining);
+      shells.push(electronsInShell);
+      remaining -= electronsInShell;
+    }
+
+    if (shells.length === 0) return '';
+
+    return `
+      <div class="pt-detail-stat" style="margin-bottom:8px;">
+        <div class="label">Електронні оболонки (спрощено)</div>
+      </div>
+      <div class="pt-shells">
+        ${shells.map((count, i) => `
+          <div class="pt-shell-ring" title="Оболонка ${i + 1}: ${count} е⁻">
+            <span class="pt-shell-count">${count}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  findNeighbors(el) {
+    if (!el.group) return []; // f-block elements: skip for simplicity
+    const result = [];
+    if (this.elementsByPosition.has(`${el.period}-${el.group - 1}`)) {
+      result.push(this.elementsByPosition.get(`${el.period}-${el.group - 1}`));
+    }
+    if (this.elementsByPosition.has(`${el.period}-${el.group + 1}`)) {
+      result.push(this.elementsByPosition.get(`${el.period}-${el.group + 1}`));
+    }
+    return result;
   }
 }
 
