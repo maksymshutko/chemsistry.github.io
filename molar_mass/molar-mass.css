@@ -1,0 +1,148 @@
+/* =========================================================
+   Стилі калькулятора молярної маси.
+   Узгоджено з палітрою сайту (--green, --orange, --blue з styles.css).
+   ========================================================= */
+
+.mm-wrap{
+  max-width:880px; margin:0 auto;
+  padding:0 32px 80px;
+}
+
+/* ===== Input panel ===== */
+.mm-input-panel{
+  background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:28px; margin-bottom:24px;
+}
+.mm-input-row{
+  display:flex; gap:12px; flex-wrap:wrap;
+}
+.mm-input-row input{
+  flex:1; min-width:200px;
+  background:var(--bg-soft); border:1px solid var(--line); border-radius:10px;
+  padding:14px 16px; color:var(--text); font-family:'JetBrains Mono'; font-size:1.1rem;
+  transition:.2s;
+}
+.mm-input-row input:focus{outline:none; border-color:var(--green);}
+.mm-input-row input.has-error{border-color:var(--orange);}
+
+.mm-error{
+  color:var(--orange); font-size:0.85rem; margin-top:10px;
+  font-family:'JetBrains Mono';
+  display:none;
+}
+.mm-error.show{display:block;}
+
+.mm-examples{
+  margin-top:16px; display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+}
+.mm-examples .label{
+  font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--text-dim);
+}
+.mm-example-btn{
+  background:var(--bg-soft); border:1px solid var(--line); border-radius:8px;
+  padding:6px 12px; font-family:'JetBrains Mono'; font-size:0.82rem; color:var(--green);
+  cursor:pointer; transition:.15s;
+}
+.mm-example-btn:hover{border-color:var(--green);}
+
+/* ===== Help disclosure ("Як вводити формулу?") ===== */
+.mm-help{
+  margin-top:18px; padding-top:16px; border-top:1px solid var(--line);
+}
+.mm-help-toggle{
+  display:flex; align-items:center; gap:8px;
+  background:none; border:none; cursor:pointer;
+  font-family:'Inter'; font-size:0.85rem; color:var(--text-dim);
+  padding:0; transition:.15s;
+}
+.mm-help-toggle:hover{color:var(--green);}
+.mm-help-toggle .chevron{
+  font-size:0.7rem; transition:transform .2s;
+  display:inline-block;
+}
+.mm-help-toggle.open .chevron{transform:rotate(90deg);}
+
+.mm-help-content{
+  display:none;
+  margin-top:14px;
+  font-size:0.88rem; color:#d6d9df; line-height:1.7;
+}
+.mm-help-content.show{display:block;}
+.mm-help-content ul{margin:0 0 0 20px; padding:0;}
+.mm-help-content li{margin-bottom:8px;}
+.mm-help-content code{
+  background:var(--bg-soft); border:1px solid var(--line); border-radius:5px;
+  padding:2px 7px; font-family:'JetBrains Mono'; font-size:0.85rem; color:var(--green);
+}
+.mm-help-content .bad code{color:var(--orange);}
+
+/* ===== Result panel ===== */
+.mm-result{
+  display:none;
+}
+.mm-result.show{display:block;}
+
+.mm-total{
+  background:var(--green-soft); border:1px solid var(--green); border-radius:16px;
+  padding:28px; margin-bottom:24px;
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
+}
+.mm-total .formula-display{
+  font-family:'JetBrains Mono'; font-weight:700; font-size:1.4rem; color:var(--text);
+}
+.mm-total .mass-display{
+  text-align:right;
+}
+.mm-total .mass-value{
+  font-family:'JetBrains Mono'; font-weight:700; font-size:2rem; color:var(--green);
+  line-height:1;
+}
+.mm-total .mass-unit{
+  font-family:'JetBrains Mono'; font-size:0.85rem; color:var(--text-dim);
+}
+
+/* ===== Breakdown table ===== */
+.mm-breakdown{
+  background:var(--bg-soft); border:1px solid var(--line); border-radius:16px;
+  padding:8px; margin-bottom:20px;
+}
+.mm-row{
+  display:grid; grid-template-columns: 50px 1fr 90px 110px 90px;
+  align-items:center; gap:12px;
+  padding:14px 16px; border-bottom:1px solid var(--line);
+}
+.mm-row:last-child{border-bottom:none;}
+.mm-row.mm-head{
+  font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:0.04em;
+}
+.mm-row .mm-symbol{
+  font-family:'JetBrains Mono'; font-weight:700; color:var(--green); font-size:1rem;
+}
+.mm-row .mm-name{font-size:0.88rem; color:var(--text-dim);}
+.mm-row .mm-count{font-family:'JetBrains Mono'; font-size:0.88rem; text-align:center;}
+.mm-row .mm-contribution{font-family:'JetBrains Mono'; font-size:0.88rem; text-align:right;}
+.mm-row .mm-percent{
+  font-family:'JetBrains Mono'; font-size:0.82rem; color:var(--text-dim); text-align:right;
+}
+
+/* Percent bar visualization */
+.mm-percent-bar-wrap{
+  background:var(--panel); border-radius:6px; height:6px; overflow:hidden; margin-top:6px;
+}
+.mm-percent-bar{
+  height:100%; background:var(--green); border-radius:6px;
+}
+
+.mm-unknown-warning{
+  background:#e8854a14; border:1px solid var(--orange); border-radius:12px;
+  padding:14px 18px; font-size:0.88rem; color:var(--text); margin-bottom:16px;
+}
+.mm-unknown-warning strong{color:var(--orange);}
+
+@media (max-width: 700px){
+  .mm-row{grid-template-columns: 40px 1fr 60px 80px; gap:8px; padding:12px;}
+  .mm-row .mm-percent{display:none;}
+  .mm-total{flex-direction:column; align-items:flex-start;}
+  .mm-total .mass-display{text-align:left;}
+}

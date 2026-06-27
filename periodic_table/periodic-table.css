@@ -1,0 +1,142 @@
+/* =========================================================
+   Стилі інтерактивної періодичної таблиці.
+   Кольори категорій підібрані як похідні від палітри сайту
+   (--green, --orange, --blue з styles.css), плюс кілька
+   додаткових відтінків для категорій елементів.
+   ========================================================= */
+
+.pt-wrap{
+  max-width:1180px; margin:0 auto;
+  padding:0 32px 80px;
+}
+
+/* ===== Legend ===== */
+.pt-legend{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin-bottom:24px;
+}
+.pt-legend-item{
+  display:flex; align-items:center; gap:7px;
+  font-size:0.78rem; color:var(--text-dim);
+  font-family:'JetBrains Mono';
+}
+.pt-legend-swatch{
+  width:14px; height:14px; border-radius:4px; flex-shrink:0;
+}
+
+/* ===== Grid ===== */
+.pt-grid{
+  display:grid;
+  grid-template-columns: repeat(18, minmax(38px, 1fr));
+  gap:4px;
+  margin-bottom:20px;
+}
+.pt-f-block{
+  display:grid;
+  grid-template-columns: repeat(18, minmax(38px, 1fr));
+  gap:4px;
+  margin-top:14px;
+}
+
+/* ===== Element cell ===== */
+.pt-cell{
+  aspect-ratio: 1/1;
+  border-radius:6px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  cursor:pointer;
+  border:1px solid rgba(0,0,0,0.15);
+  transition: transform .15s, box-shadow .15s, z-index 0s;
+  position:relative;
+  padding:2px;
+}
+.pt-cell:hover{
+  transform:scale(1.12);
+  z-index:5;
+  box-shadow:0 8px 18px -6px rgba(0,0,0,0.5);
+}
+.pt-cell.selected{
+  outline:2px solid var(--text);
+  z-index:6;
+}
+.pt-cell .pt-num{
+  font-family:'JetBrains Mono'; font-size:0.55rem;
+  position:absolute; top:3px; left:4px;
+  opacity:0.75;
+}
+.pt-cell .pt-symbol{
+  font-family:'JetBrains Mono'; font-weight:700; font-size:0.95rem;
+  line-height:1;
+}
+.pt-cell .pt-mass{
+  font-family:'JetBrains Mono'; font-size:0.5rem;
+  opacity:0.75; margin-top:1px;
+}
+
+/* placeholder cells for not-yet-added elements (optional, dim) */
+.pt-cell.pt-empty{
+  background:var(--bg-soft);
+  border:1px dashed var(--line);
+  cursor:default;
+}
+.pt-cell.pt-empty:hover{transform:none; box-shadow:none;}
+
+/* ===== Category colors =====
+   Дотримуємось приглушеної, не надто яскравої гами,
+   що узгоджується з темним фоном сайту. */
+.pt-cell.cat-alkali        { background:#e8854a; color:#1a1d24; }
+.pt-cell.cat-alkaline      { background:#eca56b; color:#1a1d24; }
+.pt-cell.cat-transition    { background:#d9b35a; color:#1a1d24; }
+.pt-cell.cat-post-transition{ background:#9fb069; color:#1a1d24; }
+.pt-cell.cat-metalloid     { background:#7fb069; color:#1a1d24; }
+.pt-cell.cat-nonmetal      { background:#5fa8a0; color:#10130f; }
+.pt-cell.cat-halogen       { background:#5b9bd1; color:#10130f; }
+.pt-cell.cat-noble         { background:#8a7fc9; color:#10130f; }
+.pt-cell.cat-lanthanide    { background:#c97fd1; color:#10130f; }
+.pt-cell.cat-actinide      { background:#d17fa3; color:#10130f; }
+.pt-cell.cat-unknown       { background:var(--line); color:var(--text-dim); }
+
+/* ===== Detail panel (shown on click) ===== */
+.pt-detail{
+  background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:24px 28px; margin-top:8px;
+  display:none;
+  box-shadow:0 24px 50px -28px rgba(0,0,0,0.5);
+}
+.pt-detail.show{display:block;}
+.pt-detail-head{
+  display:flex; align-items:center; gap:20px; margin-bottom:18px;
+}
+.pt-detail-tile{
+  width:72px; height:72px; border-radius:14px; flex-shrink:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.pt-detail-tile .num{font-family:'JetBrains Mono'; font-size:0.7rem; opacity:0.8;}
+.pt-detail-tile .symbol{font-family:'JetBrains Mono'; font-weight:700; font-size:1.8rem; line-height:1;}
+.pt-detail-name{font-size:1.3rem; font-weight:700;}
+.pt-detail-category{
+  font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:0.04em; margin-top:4px;
+}
+.pt-detail-grid{
+  display:grid; grid-template-columns:repeat(4, 1fr); gap:16px;
+}
+.pt-detail-stat .label{
+  font-family:'JetBrains Mono'; font-size:0.72rem; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px;
+}
+.pt-detail-stat .value{
+  font-size:0.95rem; font-weight:600;
+}
+.pt-detail-empty{
+  color:var(--text-dim); font-size:0.9rem; text-align:center; padding:20px;
+}
+
+@media (max-width: 900px){
+  .pt-grid, .pt-f-block{
+    grid-template-columns: repeat(18, minmax(26px, 1fr));
+    gap:2px;
+  }
+  .pt-cell .pt-symbol{font-size:0.72rem;}
+  .pt-cell .pt-mass, .pt-cell .pt-num{display:none;}
+  .pt-detail-grid{grid-template-columns:repeat(2, 1fr);}
+}

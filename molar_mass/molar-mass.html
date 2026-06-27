@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькулятор молярної маси · Хімія 10 клас</title>
+
+<!-- Шляхи нижче розраховані для розміщення в корені сайту,
+     поряд з index.html. Якщо кладете в підпапку - додайте
+     потрібну кількість ../ перед кожним шляхом. -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../icon/apple-touch-icon.png">
+
+<!-- Спільні стилі сайту -->
+<link rel="stylesheet" href="../components/styles.css">
+<link rel="stylesheet" href="../components/lesson.css">
+
+<!-- Стилі калькулятора -->
+<link rel="stylesheet" href="molar-mass.css">
+
+<!-- Компоненти сайту -->
+<script src="../components/components.js" defer></script>
+
+<!-- Дані елементів (ті самі, що для періодичної таблиці) + логіка калькулятора -->
+<script src="../periodic_table/elements-data.js" defer></script>
+<script src="molar-mass-calc.js" defer></script>
+</head>
+<body>
+
+<site-header depth="1"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="../index.html">Головна</a><span class="sep">/</span>
+    <span class="current">Калькулятор молярної маси</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono">Довідковий матеріал</div>
+    <h1>Калькулятор молярної маси</h1>
+    <p style="color:var(--text-dim); font-size:1rem; max-width:640px; line-height:1.6; margin-top:8px;">
+      Введи хімічну формулу речовини — калькулятор обчислить молярну масу та покаже масові частки кожного елемента.
+    </p>
+  </div>
+
+  <div class="mm-wrap">
+
+    <div class="mm-input-panel">
+      <div class="mm-input-row">
+        <input type="text" id="mm-formula-input" placeholder="Наприклад: H2O, Ca(OH)2, C6H12O6" autocomplete="off">
+      </div>
+      <div class="mm-error" id="mm-error"></div>
+      <div class="mm-examples">
+        <span class="label">Приклади:</span>
+        <button class="mm-example-btn" data-formula="H2O">H₂O</button>
+        <button class="mm-example-btn" data-formula="Ca(OH)2">Ca(OH)₂</button>
+        <button class="mm-example-btn" data-formula="Al2(SO4)3">Al₂(SO₄)₃</button>
+        <button class="mm-example-btn" data-formula="C6H12O6">C₆H₁₂O₆</button>
+        <button class="mm-example-btn" data-formula="(NH4)2SO4">(NH₄)₂SO₄</button>
+      </div>
+
+      <div class="mm-help">
+        <button class="mm-help-toggle" id="mm-help-toggle">
+          <span class="chevron">▸</span>
+          <span>Як вводити формулу?</span>
+        </button>
+        <div class="mm-help-content" id="mm-help-content">
+          <ul>
+            <li>Символи елементів пишуться як у таблиці: перша буква велика, друга (якщо є) — мала. Наприклад <code>Na</code>, <code>Cl</code>, <code>Ca</code>.</li>
+            <li>Кількість атомів вказується звичайною цифрою одразу після символу, без пробілу і без нижнього індексу: <code>H2O</code>, а не <code class="bad">H₂O</code> чи <code class="bad">H 2 O</code>.</li>
+            <li>Якщо біля елемента немає цифри — мається на увазі один атом: у <code>NaCl</code> по одному атому Na і Cl.</li>
+            <li>Дужки <code>( )</code> використовуються для груп атомів, а цифра після дужки множить усе, що в них: <code>Ca(OH)2</code> означає 2 групи OH.</li>
+            <li>Формула вводиться в один рядок, без пробілів і без коефіцієнта на початку (тобто <code>2H2O</code> не підтримується — лише сама формула однієї речовини).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="mm-result" id="mm-result">
+      <div class="mm-total">
+        <div class="formula-display" id="mm-formula-display"></div>
+        <div class="mass-display">
+          <div class="mass-value" id="mm-mass-value"></div>
+          <div class="mass-unit">г/моль</div>
+        </div>
+      </div>
+
+      <div class="mm-unknown-warning" id="mm-unknown-warning" style="display:none;"></div>
+
+      <div class="mm-breakdown">
+        <div class="mm-row mm-head">
+          <span>№</span>
+          <span>Елемент</span>
+          <span>Атомів</span>
+          <span>Внесок</span>
+          <span>Частка</span>
+        </div>
+        <div id="mm-breakdown-rows"></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<site-footer depth="1"></site-footer>
+
+<script>
+  const input = document.getElementById('mm-formula-input');
+  const errorBox = document.getElementById('mm-error');
+  const resultBox = document.getElementById('mm-result');
+  const formulaDisplay = document.getElementById('mm-formula-display');
+  const massValue = document.getElementById('mm-mass-value');
+  const breakdownRows = document.getElementById('mm-breakdown-rows');
+  const unknownWarning = document.getElementById('mm-unknown-warning');
+
+  function showError(message) {
+    errorBox.textContent = message;
+    errorBox.classList.add('show');
+    input.classList.add('has-error');
+    resultBox.classList.remove('show');
+  }
+
+  function clearError() {
+    errorBox.classList.remove('show');
+    input.classList.remove('has-error');
+  }
+
+  function renderResult(formulaStr, result) {
+    formulaDisplay.textContent = formulaStr;
+    massValue.textContent = result.totalMass.toFixed(3);
+
+    if (result.unknownSymbols.length > 0) {
+      unknownWarning.style.display = 'block';
+      unknownWarning.innerHTML = `<strong>Увага:</strong> елемент(и) "${result.unknownSymbols.join(', ')}" не знайдено в базі даних. Перевір правильність формули або символів.`;
+    } else {
+      unknownWarning.style.display = 'none';
+    }
+
+    breakdownRows.innerHTML = result.breakdown.map(item => `
+      <div class="mm-row">
+        <span class="mm-symbol">${item.symbol}</span>
+        <span class="mm-name">${item.name}</span>
+        <span class="mm-count">×${item.count}</span>
+        <span class="mm-contribution">${item.contribution.toFixed(3)}</span>
+        <span class="mm-percent">${item.percent.toFixed(1)}%</span>
+      </div>
+    `).join('');
+
+    resultBox.classList.add('show');
+  }
+
+  function handleInput() {
+    const value = input.value.trim();
+    if (!value) {
+      clearError();
+      resultBox.classList.remove('show');
+      return;
+    }
+
+    try {
+      const result = computeFormula(value);
+      clearError();
+      renderResult(value, result);
+    } catch (e) {
+      showError(e.message);
+    }
+  }
+
+  input.addEventListener('input', handleInput);
+
+  document.querySelectorAll('.mm-example-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      input.value = btn.dataset.formula;
+      handleInput();
+      input.focus();
+    });
+  });
+
+  const helpToggle = document.getElementById('mm-help-toggle');
+  const helpContent = document.getElementById('mm-help-content');
+  helpToggle.addEventListener('click', () => {
+    const isOpen = helpContent.classList.toggle('show');
+    helpToggle.classList.toggle('open', isOpen);
+  });
+</script>
+
+</body>
+</html>
