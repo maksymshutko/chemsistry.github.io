@@ -11,7 +11,7 @@ const DECK_META = {
   id: "organic",
   title: "Органічні речовини",
   description: "Формули, назви та властивості основних класів органічних сполук.",
-  icon: "🧪",
+  icon: "⚗️",
   color: "orange",
 };
 
