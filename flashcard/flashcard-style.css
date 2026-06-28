@@ -104,6 +104,16 @@
 .fc-front .fc-symbol{
   font-family:'JetBrains Mono'; font-weight:700; color:var(--green);
   font-size:4.2rem; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  max-width:100%;
+}
+.fc-front-image{
+  max-width:220px; max-height:180px;
+  width:auto; height:auto;
+  border-radius:10px;
+  background:#ffffff;
+  padding:10px;
+  object-fit:contain;
 }
 .fc-front .fc-hint{
   margin-top:18px; font-size:0.8rem; color:var(--text-dim);

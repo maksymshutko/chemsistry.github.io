@@ -43,11 +43,31 @@
     return result;
   }
 
+  // Якщо картинка формули не завантажилась (неправильний URL, сайт недоступний) -
+  // показуємо текстовий fallback (card.front) замість зламаної картинки.
+  function handleImageError(imgEl, fallbackText) {
+    const span = document.createElement('span');
+    span.textContent = fallbackText || '?';
+    imgEl.replaceWith(span);
+  }
+
   function renderCard() {
     const card = cards[currentIndex];
     if (!card) return;
 
-    els.symbol.textContent = card.front;
+    // Лицьова сторона: картинка (frontImage), якщо вказана, інакше текст (front)
+    els.symbol.innerHTML = '';
+    if (card.frontImage) {
+      const img = document.createElement('img');
+      img.src = card.frontImage;
+      img.alt = card.title || '';
+      img.className = 'fc-front-image';
+      img.onerror = () => handleImageError(img, card.front);
+      els.symbol.appendChild(img);
+    } else {
+      els.symbol.textContent = card.front || '?';
+    }
+
     els.backTitle.textContent = card.title;
 
     els.facts.innerHTML = card.facts.map(f => `
