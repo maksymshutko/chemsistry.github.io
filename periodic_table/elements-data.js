@@ -169,7 +169,7 @@ const ELEMENTS_DATA = [
     electronConfig: "[Ar] 3d⁵ 4s²"
   },
   {
-    number: 26, symbol: "Fe", name: "Феррум", mass: 55.845,
+    number: 26, symbol: "Fe", name: "Ферум", mass: 55.845,
     period: 4, group: 8, category: "transition",
     electronConfig: "[Ar] 3d⁶ 4s²"
   },

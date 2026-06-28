@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Флеш-карти · Хімія 10 клас</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../icon/apple-touch-icon.png">
+
+<link rel="stylesheet" href="../components/styles.css">
+<link rel="stylesheet" href="../components/lesson.css">
+<link rel="stylesheet" href="flashcard-style.css">
+
+<script src="../components/components.js" defer></script>
+<script src="decks-registry.js" defer></script>
+</head>
+<body>
+
+<site-header depth="1"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="../index.html">Головна</a><span class="sep">/</span>
+    <a href="flashcards.html">Флеш-карти</a><span class="sep">/</span>
+    <span class="current" id="breadcrumb-deck-title">…</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono" id="deck-eyebrow">Флеш-карти</div>
+    <h1 style="margin-bottom:8px;" id="deck-title">…</h1>
+  </div>
+
+  <div class="fc-game-wrap">
+
+    <div id="fc-game-area">
+      <div class="fc-progress-row">
+        <span class="fc-progress-text" id="fc-progress-text">Картка 1 з …</span>
+        <div class="fc-progress-bar-wrap">
+          <div class="fc-progress-bar" id="fc-progress-bar" style="width:0%;"></div>
+        </div>
+      </div>
+
+      <div class="fc-card-stage" id="fc-card-stage">
+        <div class="fc-card" id="fc-card">
+          <div class="fc-card-face fc-front">
+            <div class="fc-symbol" id="fc-symbol">?</div>
+            <div class="fc-hint"><span class="tap-icon">👆</span><span>Натисни, щоб перевернути</span></div>
+          </div>
+          <div class="fc-card-face fc-back">
+            <div class="fc-back-title" id="fc-back-title">…</div>
+            <div class="fc-facts" id="fc-facts"></div>
+            <div class="fc-note" id="fc-note"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fc-controls" style="margin-bottom:16px;">
+        <button class="fc-btn-icon" id="fc-prev" title="Попередня (←)">←</button>
+        <button class="fc-btn-primary" id="fc-next">Наступна картка</button>
+      </div>
+
+      <button class="fc-shuffle-btn" id="fc-shuffle">
+        <span>🔀</span><span>Перемішати колоду</span>
+      </button>
+    </div>
+
+    <div id="fc-finished-area" class="fc-finished" style="display:none;">
+      <div class="emoji">🎉</div>
+      <h2>Колоду пройдено!</h2>
+      <p>Можеш повторити ще раз або повернутись до вибору теми.</p>
+      <button class="fc-btn-primary" id="fc-restart" style="margin:0 auto 12px; display:block;">Почати знову</button>
+      <a href="flashcards.html" style="color:var(--text-dim); font-size:0.88rem; text-decoration:none;">← Усі теми</a>
+    </div>
+
+  </div>
+</main>
+
+<site-footer depth="1"></site-footer>
+
+<script>
+  // Зчитуємо ?deck=ID з адреси та підвантажуємо потрібний файл колоди
+  const params = new URLSearchParams(window.location.search);
+  const deckId = params.get('deck');
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const registry = window.DECKS_REGISTRY || [];
+    const deckInfo = registry.find(d => d.id === deckId);
+
+    if (!deckInfo) {
+      document.getElementById('deck-title').textContent = 'Тему не знайдено';
+      document.getElementById('breadcrumb-deck-title').textContent = 'Тему не знайдено';
+      document.getElementById('fc-game-area').innerHTML = `
+        <p style="color:var(--text-dim);">
+          Колоду "${deckId || '(не вказано)'}" не знайдено в реєстрі.
+          <a href="flashcards.html" style="color:var(--green);">← Повернутись до вибору теми</a>
+        </p>`;
+      return;
+    }
+
+    document.getElementById('page-title').textContent = `${deckInfo.title} · Флеш-карти · Хімія 10 клас`;
+    document.getElementById('deck-eyebrow').textContent = `Флеш-карти · ${deckInfo.icon}`;
+    document.getElementById('deck-title').textContent = deckInfo.title;
+    document.getElementById('breadcrumb-deck-title').textContent = deckInfo.title;
+
+    // Завантажуємо дані колоди, потім движок гри (порядок важливий)
+    await loadScript(deckInfo.file);
+    await loadScript('flashcard-engine.js');
+  });
+</script>
+
+</body>
+</html>

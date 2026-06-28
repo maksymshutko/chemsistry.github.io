@@ -1,0 +1,178 @@
+/* =========================================================
+   Стилі системи флеш-карт.
+   Узгоджено з палітрою сайту (--green, --orange, --blue, --line з styles.css).
+   ========================================================= */
+
+/* ===== Сторінка вибору теми (flashcards.html) ===== */
+.fc-deck-grid{
+  max-width:1180px; margin:0 auto;
+  padding:0 32px 80px;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+}
+.fc-deck-card{
+  background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:26px; text-decoration:none; color:inherit;
+  transition:.2s; display:block; position:relative; overflow:hidden;
+}
+.fc-deck-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 32px -12px rgba(0,0,0,0.4);
+}
+.fc-deck-card .icon{
+  width:48px; height:48px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; margin-bottom:16px;
+}
+.fc-deck-card.color-green .icon{background:var(--green-soft); border:1px solid var(--green);}
+.fc-deck-card.color-orange .icon{background:#e8854a22; border:1px solid var(--orange);}
+.fc-deck-card.color-blue .icon{background:#5b9bd122; border:1px solid var(--blue);}
+.fc-deck-card.color-purple .icon{background:#8a5ba622; border:1px solid #8a5ba6;}
+
+.fc-deck-card:hover.color-green{border-color:var(--green);}
+.fc-deck-card:hover.color-orange{border-color:var(--orange);}
+.fc-deck-card:hover.color-blue{border-color:var(--blue);}
+.fc-deck-card:hover.color-purple{border-color:#8a5ba6;}
+
+.fc-deck-card h3{font-size:1.1rem; font-weight:700; margin-bottom:8px;}
+.fc-deck-card p{font-size:0.88rem; color:var(--text-dim); line-height:1.55; margin-bottom:14px;}
+.fc-deck-card .fc-count{
+  font-family:'JetBrains Mono'; font-size:0.74rem; color:var(--text-dim);
+  display:flex; align-items:center; gap:6px;
+}
+
+.fc-empty-registry{
+  text-align:center; color:var(--text-dim); padding:60px 20px;
+  grid-column:1/-1;
+}
+
+@media (max-width:900px){
+  .fc-deck-grid{grid-template-columns:1fr;}
+}
+
+/* ===== Сторінка гри (flashcards-deck.html) ===== */
+.fc-game-wrap{
+  max-width:560px; margin:0 auto;
+  padding:0 32px 80px;
+}
+
+.fc-progress-row{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:20px; gap:16px;
+}
+.fc-progress-text{
+  font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--text-dim);
+}
+.fc-progress-bar-wrap{
+  flex:1; height:6px; background:var(--bg-soft); border-radius:6px; overflow:hidden;
+}
+.fc-progress-bar{
+  height:100%; background:var(--green); border-radius:6px; transition:width .3s ease;
+}
+
+/* ===== Card ===== */
+.fc-card-stage{
+  perspective:1400px;
+  margin-bottom:24px;
+}
+.fc-card{
+  width:100%; height:340px;
+  position:relative;
+  cursor:pointer;
+}
+.fc-card-face{
+  width:100%; height:100%;
+  position:absolute; inset:0;
+  backface-visibility:hidden;
+  border-radius:20px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:28px;
+  transition:transform .5s cubic-bezier(.4,.2,.2,1);
+  box-shadow:0 24px 50px -28px rgba(0,0,0,0.55);
+}
+.fc-card-face.fc-front{
+  background:linear-gradient(155deg, var(--panel), var(--bg-soft));
+  border:1px solid var(--line);
+}
+.fc-card-face.fc-back{
+  background:var(--panel);
+  border:1px solid var(--green);
+  transform:rotateY(180deg);
+}
+.fc-card.flipped .fc-front{transform:rotateY(180deg);}
+.fc-card.flipped .fc-back{transform:rotateY(360deg);}
+
+.fc-front .fc-symbol{
+  font-family:'JetBrains Mono'; font-weight:700; color:var(--green);
+  font-size:4.2rem; line-height:1;
+}
+.fc-front .fc-hint{
+  margin-top:18px; font-size:0.8rem; color:var(--text-dim);
+  display:flex; align-items:center; gap:6px;
+}
+.fc-front .fc-hint .tap-icon{
+  display:inline-block; animation: fc-pulse 1.8s ease-in-out infinite;
+}
+@keyframes fc-pulse{
+  0%, 100%{ opacity:0.5; }
+  50%{ opacity:1; }
+}
+
+.fc-back .fc-back-title{
+  font-size:1.3rem; font-weight:700; margin-bottom:18px; text-align:center;
+}
+.fc-back .fc-facts{
+  width:100%; display:flex; flex-direction:column; gap:10px; margin-bottom:16px;
+}
+.fc-back .fc-fact-row{
+  display:flex; justify-content:space-between; gap:10px;
+  font-size:0.88rem; padding-bottom:8px; border-bottom:1px solid var(--line);
+}
+.fc-back .fc-fact-row:last-child{border-bottom:none; padding-bottom:0;}
+.fc-back .fc-fact-label{color:var(--text-dim);}
+.fc-back .fc-fact-value{font-weight:600; text-align:right;}
+.fc-back .fc-note{
+  background:var(--green-soft); border-left:3px solid var(--green); border-radius:8px;
+  padding:10px 14px; font-size:0.84rem; line-height:1.5; color:#d6d9df;
+  margin-top:auto;
+}
+
+/* ===== Controls ===== */
+.fc-controls{
+  display:flex; align-items:center; justify-content:center; gap:12px;
+}
+.fc-btn-icon{
+  width:48px; height:48px; border-radius:12px;
+  background:var(--bg-soft); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem; color:var(--text); cursor:pointer; transition:.15s;
+}
+.fc-btn-icon:hover{border-color:var(--green); color:var(--green);}
+.fc-btn-icon:disabled{opacity:0.35; cursor:default;}
+.fc-btn-icon:disabled:hover{border-color:var(--line); color:var(--text);}
+
+.fc-btn-primary{
+  flex:1; max-width:220px;
+  padding:13px 20px; border-radius:12px;
+  background:var(--green); color:#10130f; border:none;
+  font-weight:600; font-size:0.92rem; cursor:pointer; transition:.15s;
+}
+.fc-btn-primary:hover{background:#5d8a4a;}
+
+.fc-shuffle-btn{
+  background:none; border:none; color:var(--text-dim);
+  font-size:0.82rem; cursor:pointer; display:flex; align-items:center; gap:6px;
+  margin:0 auto; padding:8px;
+}
+.fc-shuffle-btn:hover{color:var(--green);}
+
+.fc-finished{
+  text-align:center; padding:40px 20px;
+}
+.fc-finished .emoji{font-size:2.5rem; margin-bottom:14px;}
+.fc-finished h2{font-size:1.3rem; margin-bottom:8px;}
+.fc-finished p{color:var(--text-dim); margin-bottom:24px;}
+
+@media (max-width:600px){
+  .fc-card{height:300px;}
+  .fc-front .fc-symbol{font-size:3.4rem;}
+}
