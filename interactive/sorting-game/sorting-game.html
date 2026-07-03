@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Сортування · Хімія 10 клас</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../../icon/apple-touch-icon.png">
+
+<link rel="stylesheet" href="../../components/styles.css">
+<link rel="stylesheet" href="../../components/lesson.css">
+<link rel="stylesheet" href="sorting-style.css">
+
+<script src="../../components/components.js" defer></script>
+<script src="games-registry.js" defer></script>
+</head>
+<body>
+
+<site-header depth="2"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="../../index.html">Головна</a><span class="sep">/</span>
+    <a href="../interactive.html">Інтерактивна хімія</a><span class="sep">/</span>
+    <a href="sorting.html">Сортування</a><span class="sep">/</span>
+    <span class="current" id="breadcrumb-game-title">…</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono" id="game-eyebrow">Сортування</div>
+    <h1 style="margin-bottom:8px;" id="game-title">…</h1>
+  </div>
+
+  <div class="sg-game-wrap">
+
+    <div id="sg-game-area">
+      <div class="sg-progress-row">
+        <span class="sg-progress-text" id="sg-progress-text">Залишилось: …</span>
+        <div class="sg-score">
+          <span class="correct">✓ <span id="sg-correct-count">0</span></span>
+          <span class="wrong">✕ <span id="sg-wrong-count">0</span></span>
+        </div>
+      </div>
+
+      <div class="sg-tray" id="sg-tray"></div>
+
+      <div class="sg-zones" id="sg-zones"></div>
+    </div>
+
+    <div id="sg-finished-area" class="sg-finished" style="display:none;">
+      <div class="emoji">🎉</div>
+      <h2>Усі картки розсортовано!</h2>
+      <div class="sg-final-score" id="sg-final-score">…</div>
+      <button class="sg-btn-primary" id="sg-restart" style="margin:0 auto 12px; display:block;">Спробувати ще раз</button>
+      <a href="sorting.html" style="color:var(--text-dim); font-size:0.88rem; text-decoration:none;">← Усі теми</a>
+    </div>
+
+  </div>
+</main>
+
+<site-footer depth="2"></site-footer>
+
+<script>
+  // Зчитуємо ?game=ID з адреси та підвантажуємо потрібний файл гри
+  const params = new URLSearchParams(window.location.search);
+  const gameId = params.get('game');
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const registry = window.GAMES_REGISTRY || [];
+    const gameInfo = registry.find(g => g.id === gameId);
+
+    if (!gameInfo) {
+      document.getElementById('game-title').textContent = 'Гру не знайдено';
+      document.getElementById('breadcrumb-game-title').textContent = 'Гру не знайдено';
+      document.getElementById('sg-game-area').innerHTML = `
+        <p style="color:var(--text-dim);">
+          Гру "${gameId || '(не вказано)'}" не знайдено в реєстрі.
+          <a href="sorting.html" style="color:var(--green);">← Повернутись до вибору теми</a>
+        </p>`;
+      return;
+    }
+
+    document.getElementById('page-title').textContent = `${gameInfo.title} · Сортування · Хімія 10 клас`;
+    document.getElementById('game-eyebrow').textContent = `Сортування · ${gameInfo.icon}`;
+    document.getElementById('game-title').textContent = gameInfo.title;
+    document.getElementById('breadcrumb-game-title').textContent = gameInfo.title;
+
+    // Завантажуємо дані гри, потім движок (порядок важливий:
+    // движок одразу запускається при завантаженні і потребує
+    // GAME_ITEMS/GAME_CATEGORIES вже готовими).
+    await loadScript(gameInfo.file);
+    await loadScript('sorting-engine.js');
+  });
+</script>
+
+</body>
+</html>

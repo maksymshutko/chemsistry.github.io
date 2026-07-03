@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Тести · Хімія 10 клас</title>
+
+<!-- Шляхи нижче розраховані для розміщення в підпапці /interactive/tests/
+     (два рівні від кореня сайту). -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../../icon/apple-touch-icon.png">
+
+<link rel="stylesheet" href="../../components/styles.css">
+<link rel="stylesheet" href="../../components/lesson.css">
+<link rel="stylesheet" href="test-style.css">
+
+<script src="../../components/components.js" defer></script>
+<script src="tests-registry.js" defer></script>
+<script src="render-test-list.js" defer></script>
+</head>
+<body>
+
+<site-header depth="2"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="../../index.html">Головна</a><span class="sep">/</span>
+    <a href="../interactive.html">Інтерактивна хімія</a><span class="sep">/</span>
+    <span class="current">Тести</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono">Перевір себе</div>
+    <h1 style="margin-bottom:8px;">Тести</h1>
+    <p style="color:var(--text-dim); font-size:1rem; max-width:640px; line-height:1.6;">
+      Обери тему — і пройди тест із 12 запитань. Результат рахується одразу після перевірки.
+    </p>
+  </div>
+
+  <div class="test-grid" id="test-grid">
+    <!-- Картки тестів генеруються через render-test-list.js на основі tests-registry.js -->
+  </div>
+
+</main>
+
+<site-footer depth="2"></site-footer>
+
+</body>
+</html>

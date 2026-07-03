@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сортування · Хімія 10 клас</title>
+
+<!-- Шляхи розраховані для розміщення в підпапці /sorting-game/
+     (один рівень від кореня сайту, поряд з /flashcards/ та /components/). -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../../icon/apple-touch-icon.png">
+
+<link rel="stylesheet" href="../../components/styles.css">
+<link rel="stylesheet" href="../../components/lesson.css">
+<link rel="stylesheet" href="sorting-style.css">
+
+<script src="../../components/components.js" defer></script>
+<script src="games-registry.js" defer></script>
+<script src="render-game-list.js" defer></script>
+</head>
+<body>
+
+<site-header depth="2"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="../../index.html">Головна</a><span class="sep">/</span>
+    <a href="../interactive.html">Інтерактивна хімія</a><span class="sep">/</span>
+    <span class="current">Сортування</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono">Інтерактивне повторення</div>
+    <h1 style="margin-bottom:8px;">Сортування</h1>
+    <p style="color:var(--text-dim); font-size:1rem; max-width:640px; line-height:1.6;">
+      Обери тему — і розподіли картки за категоріями, перетягуючи їх мишкою або пальцем.
+    </p>
+  </div>
+
+  <div class="sg-game-grid" id="sg-game-grid">
+    <!-- Картки тем генеруються через render-game-list.js на основі games-registry.js -->
+  </div>
+
+</main>
+
+<site-footer depth="2"></site-footer>
+
+</body>
+</html>

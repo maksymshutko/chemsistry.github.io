@@ -1,0 +1,171 @@
+/* =========================================================
+   Стилі гри сортування (drag & drop).
+   Узгоджено з палітрою сайту (--green, --orange, --blue, --line з styles.css).
+   ========================================================= */
+
+/* ===== Сторінка вибору гри (sorting.html) ===== */
+.sg-game-grid{
+  max-width:1180px; margin:0 auto;
+  padding:0 32px 80px;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+}
+.sg-game-card{
+  background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:26px; text-decoration:none; color:inherit;
+  transition:.2s; display:block;
+}
+.sg-game-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 32px -12px rgba(0,0,0,0.4);
+}
+.sg-game-card .icon{
+  width:48px; height:48px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; margin-bottom:16px;
+}
+.sg-game-card.color-green .icon{background:var(--green-soft); border:1px solid var(--green);}
+.sg-game-card.color-orange .icon{background:#e8854a22; border:1px solid var(--orange);}
+.sg-game-card.color-blue .icon{background:#5b9bd122; border:1px solid var(--blue);}
+.sg-game-card.color-purple .icon{background:#8a5ba622; border:1px solid #8a5ba6;}
+.sg-game-card.color-pink .icon{background:#e85ca022; border:1px solid #e85ca0;}
+.sg-game-card.color-cyan .icon{background:#4fc3e822; border:1px solid #4fc3e8;}
+.sg-game-card:hover.color-cyan{border-color:#4fc3e8;}
+.sg-game-card:hover.color-green{border-color:var(--green);}
+.sg-game-card:hover.color-orange{border-color:var(--orange);}
+.sg-game-card:hover.color-blue{border-color:var(--blue);}
+.sg-game-card:hover.color-purple{border-color:#8a5ba6;}
+.sg-game-card:hover.color-pink{border-color:#e85ca0;}
+.sg-game-card h3{font-size:1.1rem; font-weight:700; margin-bottom:8px;}
+.sg-game-card p{font-size:0.88rem; color:var(--text-dim); line-height:1.55; margin-bottom:14px;}
+.sg-game-card .sg-count{
+  font-family:'JetBrains Mono'; font-size:0.74rem; color:var(--text-dim);
+  display:flex; align-items:center; gap:6px;
+}
+.sg-empty-registry{text-align:center; color:var(--text-dim); padding:60px 20px; grid-column:1/-1;}
+
+@media (max-width:900px){
+  .sg-game-grid{grid-template-columns:1fr;}
+}
+
+/* ===== Сторінка гри (sorting-game.html) ===== */
+.sg-game-wrap{
+  max-width:760px; margin:0 auto;
+  padding:0 32px 80px;
+}
+
+.sg-progress-row{
+  display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:24px; gap:16px;
+}
+.sg-progress-text{font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--text-dim);}
+.sg-score{
+  display:flex; gap:14px; font-family:'JetBrains Mono'; font-size:0.8rem;
+}
+.sg-score .correct{color:var(--green);}
+.sg-score .wrong{color:var(--orange);}
+
+/* ===== Tray: картки, які ще потрібно розсортувати ===== */
+.sg-tray{
+  background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:20px; margin-bottom:20px;
+  display:flex; flex-wrap:wrap; gap:12px;
+  min-height:90px;
+  align-items:flex-start;
+}
+.sg-tray-empty-hint{
+  color:var(--text-dim); font-size:0.85rem; margin:auto; padding:20px;
+}
+
+.sg-item{
+  background:var(--bg-soft); border:1px solid var(--line); border-radius:12px;
+  padding:14px 18px;
+  font-family:'JetBrains Mono'; font-weight:700; font-size:1.05rem; color:var(--text);
+  cursor:grab; user-select:none;
+  transition:transform .15s, box-shadow .15s, opacity .2s;
+  touch-action:none;
+}
+.sg-item:active{cursor:grabbing;}
+.sg-item.dragging{
+  opacity:0.4;
+}
+.sg-item-ghost{
+  position:fixed; z-index:1000; pointer-events:none;
+  background:var(--bg-soft); border:1px solid var(--green); border-radius:12px;
+  padding:14px 18px;
+  font-family:'JetBrains Mono'; font-weight:700; font-size:1.05rem; color:var(--text);
+  box-shadow:0 16px 32px -10px rgba(0,0,0,0.6);
+  transform:translate(-50%, -50%) scale(1.08);
+}
+
+/* ===== Drop zones (categories) ===== */
+.sg-zones{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap:16px;
+}
+
+.sg-zone{
+  border:2px dashed var(--line); border-radius:16px;
+  padding:20px; min-height:160px;
+  display:flex; flex-direction:column; gap:10px;
+  transition:.15s;
+}
+.sg-zone-label{
+  font-family:'JetBrains Mono'; font-size:0.8rem; text-transform:uppercase;
+  letter-spacing:0.04em; font-weight:700;
+  display:flex; align-items:center; gap:8px;
+  padding-bottom:10px; border-bottom:1px solid var(--line);
+}
+.sg-zone.color-green .sg-zone-label{color:var(--green);}
+.sg-zone.color-orange .sg-zone-label{color:var(--orange);}
+.sg-zone.color-pink .sg-zone-label{color:#e85ca0;}
+.sg-zone.color-cyan .sg-zone-label{color:#4fc3e8;}
+
+.sg-zone-items{
+  display:flex; flex-wrap:wrap; gap:8px; align-content:flex-start;
+}
+.sg-zone.drag-over{
+  border-style:solid;
+}
+.sg-zone.color-green.drag-over{border-color:var(--green); background:var(--green-soft);}
+.sg-zone.color-orange.drag-over{border-color:var(--orange); background:#e8854a14;}
+.sg-zone.color-cyan.drag-over{border-color:#4fc3e8; background:#4fc3e814;}
+.sg-zone.color-pink.drag-over{border-color:#e85ca0; background:#e85ca014;}
+
+.sg-item.placed-correct{
+  border-color:var(--green); background:var(--green-soft); color:var(--green);
+  cursor:default;
+}
+.sg-item.placed-wrong{
+  animation: sg-shake 0.4s ease;
+}
+@keyframes sg-shake{
+  0%, 100%{ transform:translateX(0); }
+  25%{ transform:translateX(-6px); }
+  75%{ transform:translateX(6px); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .sg-item.placed-wrong{animation:none;}
+}
+
+/* ===== Finished screen ===== */
+.sg-finished{text-align:center; padding:40px 20px;}
+.sg-finished .emoji{font-size:2.5rem; margin-bottom:14px;}
+.sg-finished h2{font-size:1.3rem; margin-bottom:8px;}
+.sg-finished p{color:var(--text-dim); margin-bottom:24px;}
+.sg-finished .sg-final-score{
+  font-family:'JetBrains Mono'; font-size:1.4rem; font-weight:700; color:var(--green);
+  margin-bottom:20px;
+}
+
+.sg-btn-primary{
+  padding:13px 24px; border-radius:12px;
+  background:var(--green); color:#10130f; border:none;
+  font-weight:600; font-size:0.92rem; cursor:pointer; transition:.15s;
+}
+.sg-btn-primary:hover{background:#5d8a4a;}
+
+@media (max-width:700px){
+  .sg-zones{grid-template-columns:1fr;}
+}

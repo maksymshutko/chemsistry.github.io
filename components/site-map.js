@@ -1,7 +1,7 @@
 const SITE_MAP = [
   {
     id: 'tema1',
-    href: 'tema1.html',
+    href: 'topic1.html',
     title: 'Тема 1. Теорія будови органічних сполук',
     lessons: [
       { href: 'urok1-1.html', title: 'Урок 1. Вуглеводні: метан, етан, етен, етин' },
@@ -15,7 +15,7 @@ const SITE_MAP = [
   },
   {
     id: 'tema2',
-    href: 'tema2.html',
+    href: 'topic2.html',
     title: 'Тема 2. Вуглеводні',
     lessons: [
       { href: 'urok2-1.html', title: 'Урок 1. Класифікація вуглеводнів. Алкани' },
@@ -34,7 +34,7 @@ const SITE_MAP = [
   },
   {
       id: 'tema3',
-      href: 'tema3.html',
+      href: 'topic3.html',
       title: 'Тема 3. Оксигеновмісні органічні сполуки',
       lessons: [
           { href: 'urok3-1.html', title: 'Урок 1. Спирти' },
@@ -57,7 +57,7 @@ const SITE_MAP = [
           { href: 'urok3-18.html', title: 'Урок 18. Розрахункові задачі' },
           { href: 'urok3-19.html', title: 'Урок 19. Контрольна робота №2' },
       ] },
-  { id: 'tema4', href: 'tema4.html', title: 'Тема 4. Нітрогеновмісні органічні сполуки', lessons: [] },
-  { id: 'tema5', href: 'tema5.html', title: 'Тема 5. Синтетичні високомолекулярні речовини', lessons: [] },
-  { id: 'tema6', href: 'tema6.html', title: "Тема 6. Багатоманітність та зв'язки між класами органічних речовин", lessons: [] },
+  { id: 'tema4', href: 'topic4.html', title: 'Тема 4. Нітрогеновмісні органічні сполуки', lessons: [] },
+  { id: 'tema5', href: 'topic5.html', title: 'Тема 5. Синтетичні високомолекулярні речовини', lessons: [] },
+  { id: 'tema6', href: 'topic6.html', title: "Тема 6. Багатоманітність та зв'язки між класами органічних речовин", lessons: [] },
 ];

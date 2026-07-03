@@ -1,0 +1,53 @@
+/* =========================================================
+   Стилі сторінки "Інтерактивна хімія".
+   Той самий патерн карток, що у flashcard-style.css (.fc-deck-card)
+   та sorting-style.css (.sg-game-card) - тут під префіксом ih-,
+   бо ця сторінка лежить у корені сайту, а не в підпапці модуля.
+   ========================================================= */
+
+.ih-grid{
+  max-width:1180px; margin:0 auto;
+  padding:0 32px 80px;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+}
+.ih-card{
+  background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:26px; text-decoration:none; color:inherit;
+  transition:.2s; display:block; position:relative;
+}
+.ih-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 32px -12px rgba(0,0,0,0.4);
+}
+.ih-card-top{
+  display:flex; align-items:flex-start; justify-content:space-between;
+  margin-bottom:16px;
+}
+.ih-card .icon{
+  width:48px; height:48px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem;
+}
+.ih-card.color-green .icon{background:var(--green-soft); border:1px solid var(--green);}
+.ih-card.color-orange .icon{background:#e8854a22; border:1px solid var(--orange);}
+.ih-card.color-blue .icon{background:#5b9bd122; border:1px solid var(--blue);}
+.ih-card.color-purple .icon{background:#8a5ba622; border:1px solid #8a5ba6;}
+.ih-card:hover.color-green{border-color:var(--green);}
+.ih-card:hover.color-orange{border-color:var(--orange);}
+.ih-card:hover.color-blue{border-color:var(--blue);}
+.ih-card:hover.color-purple{border-color:#8a5ba6;}
+
+.ih-badge{
+  font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--text-dim);
+  border:1px solid var(--line); border-radius:20px; padding:4px 10px;
+  white-space:nowrap;
+}
+
+.ih-card h3{font-size:1.1rem; font-weight:700; margin-bottom:8px;}
+.ih-card p{font-size:0.88rem; color:var(--text-dim); line-height:1.55; margin:0;}
+
+.ih-empty{text-align:center; color:var(--text-dim); padding:60px 20px; grid-column:1/-1;}
+
+@media (max-width:900px){
+  .ih-grid{grid-template-columns:1fr;}
+}
