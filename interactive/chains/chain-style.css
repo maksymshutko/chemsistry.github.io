@@ -1,0 +1,148 @@
+/* =========================================================
+   Стилі системи ланцюжків перетворень.
+   Узгоджено з палітрою сайту (--green, --orange, --blue, --line з styles.css).
+   ========================================================= */
+
+/* ===== Сторінка вибору ланцюжка (chains.html) ===== */
+.chain-grid{
+  max-width:1180px; margin:0 auto;
+  padding:0 32px 80px;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+}
+.chain-card{
+  background:var(--panel); border:1px solid var(--line); border-radius:16px;
+  padding:26px; text-decoration:none; color:inherit;
+  transition:.2s; display:block; position:relative; overflow:hidden;
+}
+.chain-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 32px -12px rgba(0,0,0,0.4);
+}
+.chain-card .icon{
+  width:48px; height:48px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; margin-bottom:16px;
+}
+.chain-card.color-green .icon{background:var(--green-soft); border:1px solid var(--green);}
+.chain-card.color-orange .icon{background:#e8854a22; border:1px solid var(--orange);}
+.chain-card.color-blue .icon{background:#5b9bd122; border:1px solid var(--blue);}
+.chain-card.color-purple .icon{background:#8a5ba622; border:1px solid #8a5ba6;}
+
+.chain-card:hover.color-green{border-color:var(--green);}
+.chain-card:hover.color-orange{border-color:var(--orange);}
+.chain-card:hover.color-blue{border-color:var(--blue);}
+.chain-card:hover.color-purple{border-color:#8a5ba6;}
+
+.chain-card h3{font-size:1.1rem; font-weight:700; margin-bottom:8px;}
+.chain-card p{font-size:0.88rem; color:var(--text-dim); line-height:1.55; margin-bottom:14px;}
+.chain-card .chain-count{
+  font-family:'JetBrains Mono'; font-size:0.74rem; color:var(--text-dim);
+  display:flex; align-items:center; gap:6px;
+}
+
+.chain-empty-registry{
+  text-align:center; color:var(--text-dim); padding:60px 20px;
+  grid-column:1/-1;
+}
+
+@media (max-width:900px){
+  .chain-grid{grid-template-columns:1fr;}
+}
+
+/* ===== Сторінка проходження (chain-runner.html) ===== */
+.cn-wrap{
+  max-width:640px; margin:0 auto;
+  padding:0 32px 80px;
+}
+
+.cn-intro{
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  background:var(--panel); border:1px solid var(--line); border-radius:14px;
+  padding:16px 20px; margin-bottom:24px;
+}
+.cn-intro p{font-size:0.88rem; color:var(--text-dim); margin:0;}
+.cn-intro .cn-meta{
+  font-family:'JetBrains Mono'; font-size:0.8rem; color:var(--text-dim);
+  white-space:nowrap;
+}
+
+/* ===== Результат ===== */
+.cn-result{
+  display:none;
+  background:var(--panel); border:1px solid var(--green); border-radius:16px;
+  padding:26px 28px; margin-bottom:24px;
+  text-align:center;
+}
+.cn-result.show{display:block;}
+.cn-result .emoji{font-size:2.2rem; margin-bottom:10px;}
+.cn-result h2{font-size:1.2rem; margin-bottom:6px;}
+.cn-result p{color:var(--text-dim); font-size:0.9rem; margin-bottom:18px;}
+.cn-result-actions{display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap;}
+.cn-btn-ghost{
+  padding:11px 20px; border-radius:10px;
+  background:var(--bg-soft); border:1px solid var(--line); color:var(--text);
+  font-size:0.88rem; font-weight:600; cursor:pointer; text-decoration:none; transition:.15s;
+  display:inline-block;
+}
+.cn-btn-ghost:hover{border-color:var(--green); color:var(--green);}
+
+/* ===== Ланцюжок (flow) ===== */
+.cn-flow{
+  display:flex; flex-direction:column; align-items:center;
+  margin-bottom:32px;
+}
+.cn-node{
+  width:100%; max-width:360px;
+  background:var(--bg-soft); border:2px solid var(--line); border-radius:12px;
+  padding:16px 20px; text-align:center;
+  font-family:'JetBrains Mono'; font-weight:700; font-size:1.05rem;
+  transition:.2s;
+}
+.cn-node.start{border-color:var(--text-dim); background:var(--panel);}
+.cn-node.pending{
+  border-style:dashed; color:var(--text-dim); font-weight:500; font-size:0.9rem;
+}
+.cn-node.filled{border-color:var(--green); background:var(--green-soft); color:var(--text);}
+
+.cn-arrow{
+  display:flex; flex-direction:column; align-items:center; gap:4px;
+  padding:10px 0;
+}
+.cn-arrow .cn-reagent{
+  font-family:'JetBrains Mono'; font-size:0.76rem; color:var(--orange);
+  background:var(--panel); border:1px solid var(--line); border-radius:20px;
+  padding:4px 12px; text-align:center; max-width:320px;
+}
+.cn-arrow .cn-arrow-line{font-size:1.3rem; color:var(--text-dim); line-height:1;}
+
+/* ===== Пул варіантів ===== */
+.cn-pool-label{
+  font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--text-dim);
+  margin-bottom:12px; text-align:center;
+}
+.cn-pool{
+  display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+}
+.cn-tile{
+  background:var(--panel); border:1px solid var(--line); border-radius:10px;
+  padding:11px 18px; font-family:'JetBrains Mono'; font-size:0.9rem; color:var(--text);
+  cursor:pointer; transition:.15s;
+}
+.cn-tile:hover{border-color:var(--green); color:var(--green);}
+.cn-tile.used{display:none;}
+.cn-tile.wrong{animation: cn-shake .4s; border-color:#d9534f; color:#d9534f;}
+@keyframes cn-shake{
+  10%, 90%{ transform:translateX(-2px); }
+  20%, 80%{ transform:translateX(3px); }
+  30%, 50%, 70%{ transform:translateX(-5px); }
+  40%, 60%{ transform:translateX(5px); }
+}
+
+.cn-mistakes{
+  text-align:center; margin-top:14px;
+  font-family:'JetBrains Mono'; font-size:0.78rem; color:var(--text-dim);
+}
+
+@media (max-width:600px){
+  .cn-intro{flex-direction:column; align-items:flex-start;}
+}

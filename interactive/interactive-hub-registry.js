@@ -67,6 +67,15 @@ const INTERACTIVE_HUB_REGISTRY = [
     color: "purple",
     badge: "Слово дня",
   },
+  {
+    id: "chains",
+    href: "chains/chains.html",
+    title: "Ланцюжки перетворень",
+    description: "Побудуй генетичний ланцюжок від вихідної речовини до кінцевого продукту.",
+    icon: "⛓️",
+    color: "orange",
+    badge: "2 ланцюжки",
+  },
 
   // ===== Додавайте нові розділи тут за тією ж схемою =====
   // {

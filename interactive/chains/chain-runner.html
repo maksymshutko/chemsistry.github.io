@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Ланцюжок перетворень · Хімія 10 клас</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../../icon/apple-touch-icon.png">
+
+<link rel="stylesheet" href="../../components/styles.css">
+<link rel="stylesheet" href="../../components/lesson.css">
+<link rel="stylesheet" href="chain-style.css">
+
+<script src="../../components/components.js" defer></script>
+<script src="chains-registry.js" defer></script>
+</head>
+<body>
+
+<site-header depth="2"></site-header>
+
+<main>
+  <div class="breadcrumb">
+    <a href="../../index.html">Головна</a><span class="sep">/</span>
+    <a href="../interactive.html">Інтерактивна хімія</a><span class="sep">/</span>
+    <a href="chains.html">Ланцюжки перетворень</a><span class="sep">/</span>
+    <span class="current" id="breadcrumb-chain-title">…</span>
+  </div>
+
+  <div class="page-head">
+    <div class="eyebrow mono" id="chain-eyebrow">Ланцюжок</div>
+    <h1 style="margin-bottom:8px;" id="chain-title">…</h1>
+  </div>
+
+  <div class="cn-wrap">
+
+    <div class="cn-result" id="cn-result">
+      <div class="emoji">🎉</div>
+      <h2>Ланцюжок побудовано!</h2>
+      <p id="cn-result-text"></p>
+      <div class="cn-result-actions">
+        <button class="cn-btn-ghost" id="cn-retry">🔁 Спробувати ще раз</button>
+        <a href="chains.html" class="cn-btn-ghost">← Усі ланцюжки</a>
+      </div>
+    </div>
+
+    <div class="cn-intro">
+      <p>Клацни на речовину в списку нижче, щоб поставити її на наступне місце в ланцюжку.</p>
+      <span class="cn-meta" id="cn-progress">Крок 1 з …</span>
+    </div>
+
+    <div class="cn-flow" id="cn-flow">
+      <!-- Схема ланцюжка генерується через chain-engine.js -->
+    </div>
+
+    <div class="cn-pool-label">Обери наступну речовину:</div>
+    <div class="cn-pool" id="cn-pool">
+      <!-- Плитки-варіанти генеруються через chain-engine.js -->
+    </div>
+
+    <div class="cn-mistakes" id="cn-mistakes"></div>
+
+  </div>
+</main>
+
+<site-footer depth="2"></site-footer>
+
+<script>
+  // Зчитуємо ?chain=ID з адреси та підвантажуємо потрібний файл ланцюжка
+  const params = new URLSearchParams(window.location.search);
+  const chainId = params.get('chain');
+
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = reject;
+      document.body.appendChild(script);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const registry = window.CHAINS_REGISTRY || [];
+    const chainInfo = registry.find(c => c.id === chainId);
+
+    if (!chainInfo) {
+      document.getElementById('chain-title').textContent = 'Ланцюжок не знайдено';
+      document.getElementById('breadcrumb-chain-title').textContent = 'Ланцюжок не знайдено';
+      document.getElementById('cn-flow').innerHTML = `
+        <p style="color:var(--text-dim);">
+          Ланцюжок "${chainId || '(не вказано)'}" не знайдено в реєстрі.
+          <a href="chains.html" style="color:var(--green);">← Повернутись до вибору</a>
+        </p>`;
+      document.querySelector('.cn-intro').style.display = 'none';
+      document.querySelector('.cn-pool-label').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('page-title').textContent = `${chainInfo.title} · Ланцюжки перетворень · Хімія 10 клас`;
+    document.getElementById('chain-eyebrow').textContent = `Ланцюжок · ${chainInfo.icon}`;
+    document.getElementById('chain-title').textContent = chainInfo.title;
+    document.getElementById('breadcrumb-chain-title').textContent = chainInfo.title;
+
+    // Завантажуємо дані ланцюжка, потім движок (порядок важливий)
+    await loadScript(chainInfo.file);
+    await loadScript('chain-engine.js');
+  });
+</script>
+
+</body>
+</html>
