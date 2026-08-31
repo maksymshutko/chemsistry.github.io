@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Підручник · Хімія 11 клас</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../icon/apple-touch-icon.png">
+<link rel="stylesheet" href="../components/styles.css">
+<script src="../components/components.js" defer></script>
+<style>
+  /* ===== Page header ===== */
+  .page-head{
+    max-width:1180px; margin:0 auto;
+    padding:56px 32px 32px;
+  }
+  .page-head h1{
+    font-size:2.4rem; font-weight:800; letter-spacing:-0.01em; margin-bottom:12px;
+  }
+  .page-head .sub{color:var(--text-dim); font-size:1.02rem; max-width:560px; line-height:1.55;}
+
+  /* ===== Action bar ===== */
+  .action-bar{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 28px;
+    display:flex; gap:14px; flex-wrap:wrap; align-items:center;
+  }
+
+  /* ===== PDF viewer panel ===== */
+  .viewer-wrap{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 64px;
+  }
+  .viewer-panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    padding:14px; box-shadow:0 30px 60px -30px rgba(0,0,0,0.5);
+  }
+  .viewer-panel iframe{
+    width:100%; height:80vh; min-height:520px;
+    border:none; border-radius:10px; background:#0e1014;
+    display:block;
+  }
+
+  /* ===== Chapters list ===== */
+  .chapters{
+    max-width:1180px; margin:0 auto;
+    padding:0 32px 80px;
+  }
+  .section-head{margin-bottom:24px;}
+  .section-head h2{font-size:1.4rem; font-weight:700;}
+  .chapter-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:14px;
+  }
+  .chapter-card{
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:12px;
+    padding:18px; display:flex; align-items:center; gap:14px;
+  }
+  .chapter-card .num{
+    font-family:'JetBrains Mono'; font-weight:700; color:var(--green);
+    font-size:1.1rem; min-width:32px;
+  }
+  .chapter-card .label{font-size:0.9rem; line-height:1.4;}
+
+  @media (max-width: 900px){
+    .page-head h1{font-size:1.8rem;}
+    .chapter-grid{grid-template-columns:1fr;}
+    .viewer-panel iframe{height:70vh;}
+  }
+</style>
+</head>
+<body>
+
+<site-header depth="1" grade="11"></site-header>
+
+<main>
+  <div class="page-head">
+    <div class="eyebrow mono">Друкований підручник</div>
+    <h1>Хімія, 11 клас</h1>
+    <p class="sub">Попель П. П. Хімія: підруч. для 11 кл. закл. заг. серед. освіти (рівень стандарту) — повний текст підручника для перегляду онлайн або завантаження.</p>
+  </div>
+
+  <div class="action-bar">
+    <a href="https://drive.google.com/uc?export=download&id=13fMCQCl-8bT5Mf8O6V1TLPX8usm8iMnj" class="btn btn-primary" download>
+      ⬇ Завантажити PDF
+    </a>
+    <a href="https://drive.google.com/file/d/13fMCQCl-8bT5Mf8O6V1TLPX8usm8iMnj/view" class="btn btn-ghost" target="_blank">
+      Відкрити в новій вкладці ↗
+    </a>
+  </div>
+
+  <div class="viewer-wrap">
+    <div class="viewer-panel">
+      <iframe
+        src="https://drive.google.com/file/d/13fMCQCl-8bT5Mf8O6V1TLPX8usm8iMnj/preview"
+        allow="autoplay">
+      </iframe>
+    </div>
+  </div>
+
+  <div class="chapters">
+    <div class="section-head">
+      <h2>Зміст курсу</h2>
+    </div>
+    <div class="chapter-grid">
+      <div class="chapter-card">
+        <div class="num">01</div>
+        <div class="label">Неорганічні речовини і їхні властивості (частина I)</div>
+      </div>
+      <div class="chapter-card">
+        <div class="num">02</div>
+        <div class="label">Неорганічні речовини і їхні властивості (частина II)</div>
+      </div>
+      <div class="chapter-card">
+        <div class="num">03</div>
+        <div class="label">Хімія і прогрес людства</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<site-footer depth="1" grade="11"></site-footer>
+
+</body>
+</html>

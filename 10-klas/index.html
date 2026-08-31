@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Хімія · 10 клас</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../components/styles.css">
+<link rel="icon" type="image/x-icon" href="../icon/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="../icon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../icon/favicon-16x16.png">
+<link rel="apple-touch-icon" href="../icon/apple-touch-icon.png">
+<script src="../components/components.js" defer></script>
+<style>
+  /* ===== Background molecule field ===== */
+  .molecule-field{
+    position:fixed; inset:0; z-index:0; overflow:hidden; pointer-events:none;
+  }
+  .molecule-field svg{
+    position:absolute; opacity:0.07;
+    animation: drift 60s linear infinite;
+  }
+  @keyframes drift{
+    0%{ transform: translate(0,0) rotate(0deg); }
+    100%{ transform: translate(-30px, 40px) rotate(360deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .molecule-field svg{ animation:none; }
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative; z-index:1;
+    max-width:1180px; margin:0 auto;
+    padding:96px 32px 80px;
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:56px;
+    align-items:center;
+  }
+  h1{
+    font-size:3.1rem; line-height:1.08; font-weight:800; letter-spacing:-0.01em;
+    margin-bottom:22px;
+  }
+  h1 .hl{color:var(--green);}
+  .hero p.lead{
+    color:var(--text-dim); font-size:1.08rem; line-height:1.6; max-width:480px; margin-bottom:32px;
+  }
+  .cta-row{display:flex; gap:14px; flex-wrap:wrap;}
+
+  /* Periodic-card hero visual */
+  .pt-card{
+    position:relative; aspect-ratio:1/1; max-width:380px; margin:0 auto;
+    background:var(--panel); border:1px solid var(--line); border-radius:20px;
+    padding:28px; display:flex; flex-direction:column; justify-content:space-between;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.5);
+  }
+  .pt-card .num{font-family:'JetBrains Mono'; color:var(--text-dim); font-size:0.85rem;}
+  .pt-card .symbol{
+    font-family:'JetBrains Mono'; font-weight:700; font-size:5rem; color:var(--green);
+    line-height:1;
+  }
+  .pt-card .name{font-size:1.1rem; font-weight:600;}
+  .pt-card .mass{font-family:'JetBrains Mono'; color:var(--text-dim); font-size:0.85rem;}
+  .pt-card .topic-tag{
+    position:absolute; top:24px; right:24px;
+    font-family:'JetBrains Mono'; font-size:0.7rem; color:var(--orange);
+    border:1px solid var(--orange); padding:3px 8px; border-radius:6px;
+  }
+
+  /* ===== Section shared ===== */
+  section{position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:64px 32px;}
+
+  /* ===== Topic grid (periodic-table inspired cards) ===== */
+  .topics{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+  }
+  .topic-card{
+    background:var(--bg-soft); border:1px solid var(--line); border-radius:14px;
+    padding:22px; cursor:pointer; transition:.2s; position:relative; overflow:hidden;
+    text-decoration:none; color:inherit; display:block; min-height:148px;
+  }
+  .topic-card:hover{
+    border-color:var(--green); transform:translateY(-3px);
+    box-shadow:0 12px 28px -10px rgba(0,0,0,0.4);
+  }
+  .topic-card .idx{font-family:'JetBrains Mono'; font-size:0.75rem; color:var(--text-dim);}
+  .topic-card .formula{
+    font-family:'JetBrains Mono'; font-weight:700; font-size:1.6rem; color:var(--green);
+    margin:10px 0 6px;
+  }
+  .topic-card .title{font-size:0.98rem; font-weight:600; line-height:1.35; margin-bottom:10px;}
+  .topic-card .meta{display:flex; gap:10px; font-size:0.75rem; color:var(--text-dim);}
+  .topic-card .meta span{display:flex; align-items:center; gap:4px;}
+
+  /* ===== Resource types row ===== */
+  .tools{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  .res-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:24px;
+  }
+  .res-card .icon{
+    width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:16px; font-size:1.2rem;
+  }
+  .res-card.video .icon{background:#5b9bd122; color:var(--blue);}
+  .res-card.table .icon{background:#e8854a22; color:var(--orange);}
+  .res-card.book .icon{background:#7fb06922; color:var(--green);}
+  .res-card.photo .icon{background:#c97fd122; color:#c97fd1;}
+  .res-card h3{font-size:1rem; font-weight:700; margin-bottom:6px;}
+  .res-card p{font-size:0.85rem; color:var(--text-dim); line-height:1.5;}
+
+  footer{position:relative; z-index:1;}
+
+  @media (max-width: 900px){
+    .hero{grid-template-columns:1fr; padding-top:64px;}
+    h1{font-size:2.2rem;}
+    .topics{grid-template-columns:repeat(2,1fr);}
+    .tools{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<div class="molecule-field" id="molecule-field"></div>
+
+<site-header depth="1" grade="10"></site-header>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow mono">Органічна хімія · 10 клас (рівень стандарту)</div>
+      <h1>Хімія — це мова,<br>якою <span class="hl">говорить</span> матерія.</h1>
+      <p class="lead">Підручник, презентації, відеодосліди та конспекти — все для 10 класу в одному місці. Обирай тему й починай вивчати.</p>
+      <div class="cta-row">
+        <a href="#topics" class="btn btn-primary">Перейти до тем →</a>
+        <a href="#tools" class="btn btn-ghost">Усі інструменти</a>
+      </div>
+    </div>
+    <div class="pt-card">
+      <div class="topic-tag">ТЕМА 4</div>
+      <div class="num">CH₄</div>
+      <div>
+        <div class="symbol">Ал</div>
+        <div class="name">Алкани</div>
+        <div class="mass">гомологічний ряд</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="topics">
+    <div class="section-head">
+      <h2>Теми курсу</h2>
+      <span class="count mono">6 тем</span>
+    </div>
+    <div class="topics">
+      <a href="topics/topic1.html" class="topic-card">
+        <div class="idx">01</div>
+        <div class="formula">C–C</div>
+        <div class="title">Теорія будови органічних сполук</div>
+        <div class="meta"><span>📚 7 уроків</span></div>
+      </a>
+      <a href="topics/topic2.html" class="topic-card">
+        <div class="idx">02</div>
+        <div class="formula">CₙHₘ</div>
+        <div class="title">Вуглеводні</div>
+        <div class="meta"><span>📚 12 уроків</span></div>
+      </a>
+      <a href="topics/topic3.html" class="topic-card">
+        <div class="idx">03</div>
+        <div class="formula">R–OH</div>
+        <div class="title">Оксигеновмісні органічні сполуки</div>
+        <div class="meta"><span>📚 19 уроків</span></div>
+      </a>
+      <a href="topics/topic4.html" class="topic-card">
+        <div class="idx">04</div>
+        <div class="formula">R–NH₂</div>
+        <div class="title">Нітрогеновмісні органічні сполуки</div>
+        <div class="meta"><span>📚 скоро</span></div>
+      </a>
+      <a href="topics/topic5.html" class="topic-card">
+        <div class="idx">05</div>
+        <div class="formula">(–A–)ₙ</div>
+        <div class="title">Синтетичні високомолекулярні речовини і полімери</div>
+        <div class="meta"><span>📚 скоро</span></div>
+      </a>
+      <a href="topics/topic6.html" class="topic-card">
+        <div class="idx">06</div>
+        <div class="formula">Σ</div>
+        <div class="title">Багатоманітність та зв'язки між класами органічних речовин</div>
+        <div class="meta"><span>📚 скоро</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section id="tools">
+    <div class="section-head">
+      <h2>Інструменти</h2>
+    </div>
+    <div class="tools">
+      <div class="res-card video">
+        <div class="icon">🎬</div>
+        <h3>Відео-досліди</h3>
+        <p>Лабораторні досліди та пояснення механізмів реакцій.</p>
+      </div>
+      <a href="../interactive/periodic_table/periodic-table.html" class="res-card table" style="text-decoration:none; color:inherit; display:block;">
+        <div class="icon">⚛️</div>
+        <h3>Періодична система</h3>
+        <p>Інтерактивна таблиця Менделєєва з усіма елементами та їх властивостями.</p>
+      </a>
+      <a href="../interactive/interactive.html" class="res-card book" style="text-decoration:none; color:inherit; display:block;">
+        <div class="icon">📘</div>
+        <h3>Інтерактивна хімія</h3>
+        <p>Опануй предмет через дію.</p>
+      </a>
+      <a href="../interactive/molar_mass/molar-mass.html" class="res-card table" style="text-decoration:none; color:inherit; display:block;">
+        <div class="icon">🧮</div>
+        <h3>Молярна маса</h3>
+        <p>Калькулятор молярної маси будь-якої хімічної формули з розбивкою по елементах.</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<site-footer depth="1" grade="10"></site-footer>
+
+<script>
+  // Subtle floating molecule shapes in background
+  const field = document.getElementById('molecule-field');
+  const molecules = [
+    // simple hexagon ring (benzene-like)
+    `<svg width="200" height="200" viewBox="0 0 200 200" style="top:8%; left:4%;">
+      <polygon points="100,20 165,57 165,132 100,170 35,132 35,57" fill="none" stroke="#7fb069" stroke-width="2"/>
+      <circle cx="100" cy="20" r="6" fill="#7fb069"/><circle cx="165" cy="57" r="6" fill="#7fb069"/>
+      <circle cx="165" cy="132" r="6" fill="#7fb069"/><circle cx="100" cy="170" r="6" fill="#7fb069"/>
+      <circle cx="35" cy="132" r="6" fill="#7fb069"/><circle cx="35" cy="57" r="6" fill="#7fb069"/>
+    </svg>`,
+    `<svg width="160" height="160" viewBox="0 0 160 160" style="top:55%; left:88%; animation-direction:reverse;">
+      <line x1="20" y1="80" x2="80" y2="40" stroke="#e8854a" stroke-width="2"/>
+      <line x1="80" y1="40" x2="140" y2="80" stroke="#e8854a" stroke-width="2"/>
+      <circle cx="20" cy="80" r="8" fill="#e8854a"/><circle cx="80" cy="40" r="10" fill="#e8854a"/><circle cx="140" cy="80" r="8" fill="#e8854a"/>
+    </svg>`,
+    `<svg width="140" height="140" viewBox="0 0 140 140" style="top:80%; left:20%;">
+      <line x1="30" y1="100" x2="70" y2="30" stroke="#5b9bd1" stroke-width="2"/>
+      <line x1="70" y1="30" x2="110" y2="100" stroke="#5b9bd1" stroke-width="2"/>
+      <line x1="30" y1="100" x2="110" y2="100" stroke="#5b9bd1" stroke-width="2"/>
+      <circle cx="30" cy="100" r="7" fill="#5b9bd1"/><circle cx="70" cy="30" r="7" fill="#5b9bd1"/><circle cx="110" cy="100" r="7" fill="#5b9bd1"/>
+    </svg>`
+  ];
+  molecules.forEach((m, i) => {
+    const div = document.createElement('div');
+    div.innerHTML = m;
+    div.style.position = 'absolute';
+    div.style.animationDelay = `${i * 5}s`;
+    field.appendChild(div.firstElementChild);
+  });
+</script>
+
+</body>
+</html>
